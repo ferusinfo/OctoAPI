@@ -67,7 +67,14 @@ struct ExampleAPIAdapter : Adapter {
 ```
 
 ##Parsing
-The library comes with built-in suppoort for Gloss - in my opinion best JSON mapping library - make a use of it with the `GlossDataParser` class as follows:
+You can use any object-parsing library of your choice. To use a custom parser in your project, simply implement `DataParser` protocol with two following methods:
+
+```swift
+static func parse<T: Decodable>(object: Any?, withType type: T.Type) -> T?
+static func parse<T: Decodable>(collection: Any?, withType type: T.Type) -> [T]?
+```
+
+The library also comes with built-in suppoort for [Gloss](https://github.com/hkellaway/Gloss) - in my opinion best JSON mapping library for Swift - make a use of it with the `GlossDataParser` class as follows:
 
 ```swift
 //Object parsing
@@ -81,20 +88,16 @@ if let examples = GlossDataParser.parse(collection: data, withType: ExampleModel
 }
 ```
 
-You can also use any object-parsing library of your choice. To use a custom parser in your project, simply implement `DataParser` protocol with two following methods:
-
-```swift
-static func parse<T: Decodable>(object: Any?, withType type: T.Type) -> T?
-static func parse<T: Decodable>(collection: Any?, withType type: T.Type) -> [T]?
-```
 
 ##Paging
 If your API uses paging, create a subclass of `Paging` class, override the parameters to match your API needs and add it to the `OctoBuilder` class when building a request by passing `limit` and `offset` parameters to the initializer.
 
+Paging data parsed from the response is passed into the completion block through `paging` parameter.
+
 You can either use the default approach where paging information is added to the HTTP Headers of the response or use your own implemenation in your `Paging` subclass by overriding the `parse(fromResponse:)` method.
 
 ##Authorization
-This library has a build-in authorization support. For now the only implementation of the `Authorizable` protocol is the `GrantTypePasswordAuthorization` class with implementation of OAuth 2.0 Grant Type Password type of authorization that holds your access token in the device secure Keychain.
+This library has a built-in authorization support. For now the only implementation of the `Authorizable` protocol is the `GrantTypePasswordAuthorization` class with implementation of OAuth 2.0 Grant Type Password type of authorization that holds your access token in the device secure Keychain.
 
 The implementation is calling a given API for a new Access Token if the token has expired during the request, suspending any other requests made on that Connector instance. When the new Access Token is obtained
 
