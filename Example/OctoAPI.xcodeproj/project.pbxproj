@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D2124AE303D16B1D1C5DB5F /* Pods_OctoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340BE7D1EB63C9C1FC8B24E8 /* Pods_OctoAPI.framework */; };
+		A4180DE61DE7373600783352 /* AuthorizationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4180DE51DE7373600783352 /* AuthorizationParameters.swift */; };
+		A454D2C91DE5995800B69E06 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A454D2C81DE5995800B69E06 /* ExamplesTableViewController.swift */; };
+		A454D2CB1DE5A02D00B69E06 /* BaseExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = A454D2CA1DE5A02D00B69E06 /* BaseExample.swift */; };
+		A49E954D1DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95361DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift */; };
+		A49E954E1DE44E6500FD99D4 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95381DE44E6500FD99D4 /* Credentials.swift */; };
+		A49E954F1DE44E6500FD99D4 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95391DE44E6500FD99D4 /* GlobalVariables.swift */; };
+		A49E95501DE44E6500FD99D4 /* Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E953A1DE44E6500FD99D4 /* Paging.swift */; };
+		A49E95511DE44E6500FD99D4 /* RunnableExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E953B1DE44E6500FD99D4 /* RunnableExample.swift */; };
+		A49E95521DE44E6500FD99D4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E953D1DE44E6500FD99D4 /* StringExtension.swift */; };
+		A49E95531DE44E6500FD99D4 /* OAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E953F1DE44E6500FD99D4 /* OAuthRequest.swift */; };
+		A49E95541DE44E6500FD99D4 /* OAuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95401DE44E6500FD99D4 /* OAuthToken.swift */; };
+		A49E95551DE44E6500FD99D4 /* OctoAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95421DE44E6500FD99D4 /* OctoAdapter.swift */; };
+		A49E95561DE44E6500FD99D4 /* OctoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95431DE44E6500FD99D4 /* OctoRequest.swift */; };
+		A49E95571DE44E6500FD99D4 /* OctoConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95441DE44E6500FD99D4 /* OctoConnector.swift */; };
+		A49E95581DE44E6500FD99D4 /* GlossDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95461DE44E6500FD99D4 /* GlossDataParser.swift */; };
+		A49E95591DE44E6500FD99D4 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95481DE44E6500FD99D4 /* Adapter.swift */; };
+		A49E955A1DE44E6500FD99D4 /* Authorizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95491DE44E6500FD99D4 /* Authorizable.swift */; };
+		A49E955B1DE44E6500FD99D4 /* Callable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E954A1DE44E6500FD99D4 /* Callable.swift */; };
+		A49E955C1DE44E6500FD99D4 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E954B1DE44E6500FD99D4 /* DataParser.swift */; };
+		A49E955D1DE44E6500FD99D4 /* PagingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E954C1DE44E6500FD99D4 /* PagingParameters.swift */; };
+		A49E95651DE4504100FD99D4 /* GetResponseBlogAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E955F1DE4504100FD99D4 /* GetResponseBlogAdapter.swift */; };
+		A49E95671DE4504100FD99D4 /* GetResponseBlogConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95611DE4504100FD99D4 /* GetResponseBlogConnector.swift */; };
+		A49E95681DE4504100FD99D4 /* GetResponseBlogExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95621DE4504100FD99D4 /* GetResponseBlogExample.swift */; };
+		A49E956A1DE4504100FD99D4 /* GRBlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95641DE4504100FD99D4 /* GRBlogPost.swift */; };
+		A4E7FBBF1DE44E2700E14AEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */; };
+		A4E7FBC41DE44E2700E14AEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC21DE44E2700E14AEE /* Main.storyboard */; };
+		A4E7FBC61DE44E2700E14AEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC51DE44E2700E14AEE /* Assets.xcassets */; };
+		A4E7FBC91DE44E2700E14AEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC71DE44E2700E14AEE /* LaunchScreen.storyboard */; };
+		A4F57FD41DE851E700545F34 /* GetResponseBlogPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F57FD31DE851E700545F34 /* GetResponseBlogPaging.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		340BE7D1EB63C9C1FC8B24E8 /* Pods_OctoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OctoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59BE570EE8ADB6975CB4EF20 /* Pods-OctoAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OctoAPI/Pods-OctoAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		A4180DE51DE7373600783352 /* AuthorizationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationParameters.swift; sourceTree = "<group>"; };
+		A454D2C81DE5995800B69E06 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
+		A454D2CA1DE5A02D00B69E06 /* BaseExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseExample.swift; sourceTree = "<group>"; };
+		A49E95361DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrantTypePasswordAuthorization.swift; sourceTree = "<group>"; };
+		A49E95381DE44E6500FD99D4 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		A49E95391DE44E6500FD99D4 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		A49E953A1DE44E6500FD99D4 /* Paging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paging.swift; sourceTree = "<group>"; };
+		A49E953B1DE44E6500FD99D4 /* RunnableExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnableExample.swift; sourceTree = "<group>"; };
+		A49E953D1DE44E6500FD99D4 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		A49E953F1DE44E6500FD99D4 /* OAuthRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRequest.swift; sourceTree = "<group>"; };
+		A49E95401DE44E6500FD99D4 /* OAuthToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthToken.swift; sourceTree = "<group>"; };
+		A49E95421DE44E6500FD99D4 /* OctoAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoAdapter.swift; sourceTree = "<group>"; };
+		A49E95431DE44E6500FD99D4 /* OctoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoRequest.swift; sourceTree = "<group>"; };
+		A49E95441DE44E6500FD99D4 /* OctoConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoConnector.swift; sourceTree = "<group>"; };
+		A49E95461DE44E6500FD99D4 /* GlossDataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlossDataParser.swift; sourceTree = "<group>"; };
+		A49E95481DE44E6500FD99D4 /* Adapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
+		A49E95491DE44E6500FD99D4 /* Authorizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorizable.swift; sourceTree = "<group>"; };
+		A49E954A1DE44E6500FD99D4 /* Callable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Callable.swift; sourceTree = "<group>"; };
+		A49E954B1DE44E6500FD99D4 /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		A49E954C1DE44E6500FD99D4 /* PagingParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingParameters.swift; sourceTree = "<group>"; };
+		A49E955F1DE4504100FD99D4 /* GetResponseBlogAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogAdapter.swift; sourceTree = "<group>"; };
+		A49E95611DE4504100FD99D4 /* GetResponseBlogConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogConnector.swift; sourceTree = "<group>"; };
+		A49E95621DE4504100FD99D4 /* GetResponseBlogExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogExample.swift; sourceTree = "<group>"; };
+		A49E95641DE4504100FD99D4 /* GRBlogPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRBlogPost.swift; sourceTree = "<group>"; };
+		A4E7FBBB1DE44E2700E14AEE /* OctoAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A4E7FBC31DE44E2700E14AEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A4E7FBC51DE44E2700E14AEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A4E7FBC81DE44E2700E14AEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A4E7FBCA1DE44E2700E14AEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4F57FD31DE851E700545F34 /* GetResponseBlogPaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogPaging.swift; sourceTree = "<group>"; };
+		E375C15B776C88FAF0FDB324 /* Pods-OctoAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-OctoAPI/Pods-OctoAPI.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4E7FBB81DE44E2700E14AEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D2124AE303D16B1D1C5DB5F /* Pods_OctoAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C5B1D88739B75AA1590638E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59BE570EE8ADB6975CB4EF20 /* Pods-OctoAPI.debug.xcconfig */,
+				E375C15B776C88FAF0FDB324 /* Pods-OctoAPI.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A49E95341DE44E6500FD99D4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A49E95351DE44E6500FD99D4 /* AuthorizationTypes */,
+				A49E95371DE44E6500FD99D4 /* Classes */,
+				A49E953C1DE44E6500FD99D4 /* Extensions */,
+				A49E953E1DE44E6500FD99D4 /* Models */,
+				A49E95411DE44E6500FD99D4 /* Octo */,
+				A49E95451DE44E6500FD99D4 /* Parsers */,
+				A49E95471DE44E6500FD99D4 /* Protocols */,
+			);
+			name = Sources;
+			path = ../Sources;
+			sourceTree = "<group>";
+		};
+		A49E95351DE44E6500FD99D4 /* AuthorizationTypes */ = {
+			isa = PBXGroup;
+			children = (
+				A49E95361DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift */,
+			);
+			path = AuthorizationTypes;
+			sourceTree = "<group>";
+		};
+		A49E95371DE44E6500FD99D4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A49E95381DE44E6500FD99D4 /* Credentials.swift */,
+				A49E95391DE44E6500FD99D4 /* GlobalVariables.swift */,
+				A49E953A1DE44E6500FD99D4 /* Paging.swift */,
+				A49E953B1DE44E6500FD99D4 /* RunnableExample.swift */,
+				A454D2CA1DE5A02D00B69E06 /* BaseExample.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A49E953C1DE44E6500FD99D4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A49E953D1DE44E6500FD99D4 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A49E953E1DE44E6500FD99D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A49E953F1DE44E6500FD99D4 /* OAuthRequest.swift */,
+				A49E95401DE44E6500FD99D4 /* OAuthToken.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A49E95411DE44E6500FD99D4 /* Octo */ = {
+			isa = PBXGroup;
+			children = (
+				A49E95421DE44E6500FD99D4 /* OctoAdapter.swift */,
+				A49E95431DE44E6500FD99D4 /* OctoRequest.swift */,
+				A49E95441DE44E6500FD99D4 /* OctoConnector.swift */,
+			);
+			path = Octo;
+			sourceTree = "<group>";
+		};
+		A49E95451DE44E6500FD99D4 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				A49E95461DE44E6500FD99D4 /* GlossDataParser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		A49E95471DE44E6500FD99D4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A49E95481DE44E6500FD99D4 /* Adapter.swift */,
+				A49E95491DE44E6500FD99D4 /* Authorizable.swift */,
+				A49E954A1DE44E6500FD99D4 /* Callable.swift */,
+				A49E954B1DE44E6500FD99D4 /* DataParser.swift */,
+				A49E954C1DE44E6500FD99D4 /* PagingParameters.swift */,
+				A4180DE51DE7373600783352 /* AuthorizationParameters.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A49E955E1DE4504100FD99D4 /* GetResponseBlog */ = {
+			isa = PBXGroup;
+			children = (
+				A49E955F1DE4504100FD99D4 /* GetResponseBlogAdapter.swift */,
+				A49E95611DE4504100FD99D4 /* GetResponseBlogConnector.swift */,
+				A49E95621DE4504100FD99D4 /* GetResponseBlogExample.swift */,
+				A49E95641DE4504100FD99D4 /* GRBlogPost.swift */,
+				A4F57FD31DE851E700545F34 /* GetResponseBlogPaging.swift */,
+			);
+			path = GetResponseBlog;
+			sourceTree = "<group>";
+		};
+		A4E7FBB21DE44E2700E14AEE = {
+			isa = PBXGroup;
+			children = (
+				A49E955E1DE4504100FD99D4 /* GetResponseBlog */,
+				A49E95341DE44E6500FD99D4 /* Sources */,
+				A4E7FBBD1DE44E2700E14AEE /* OctoAPI */,
+				A4E7FBBC1DE44E2700E14AEE /* Products */,
+				0C5B1D88739B75AA1590638E /* Pods */,
+				F6DA0AD19FEDFF04B5FE0600 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A4E7FBBC1DE44E2700E14AEE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4E7FBBB1DE44E2700E14AEE /* OctoAPI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4E7FBBD1DE44E2700E14AEE /* OctoAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */,
+				A4E7FBC21DE44E2700E14AEE /* Main.storyboard */,
+				A4E7FBC51DE44E2700E14AEE /* Assets.xcassets */,
+				A4E7FBC71DE44E2700E14AEE /* LaunchScreen.storyboard */,
+				A4E7FBCA1DE44E2700E14AEE /* Info.plist */,
+				A454D2C81DE5995800B69E06 /* ExamplesTableViewController.swift */,
+			);
+			path = OctoAPI;
+			sourceTree = "<group>";
+		};
+		F6DA0AD19FEDFF04B5FE0600 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				340BE7D1EB63C9C1FC8B24E8 /* Pods_OctoAPI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4E7FBBA1DE44E2700E14AEE /* OctoAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E7FBCD1DE44E2700E14AEE /* Build configuration list for PBXNativeTarget "OctoAPI" */;
+			buildPhases = (
+				F8E74CCB20203F80C157FBA9 /* [CP] Check Pods Manifest.lock */,
+				A4E7FBB71DE44E2700E14AEE /* Sources */,
+				A4E7FBB81DE44E2700E14AEE /* Frameworks */,
+				A4E7FBB91DE44E2700E14AEE /* Resources */,
+				7CCC51E5284AEA9D002E8975 /* [CP] Embed Pods Frameworks */,
+				9590BBD901BFF11612C3A6E1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OctoAPI;
+			productName = OctoAPI;
+			productReference = A4E7FBBB1DE44E2700E14AEE /* OctoAPI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4E7FBB31DE44E2700E14AEE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				TargetAttributes = {
+					A4E7FBBA1DE44E2700E14AEE = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A4E7FBB61DE44E2700E14AEE /* Build configuration list for PBXProject "OctoAPI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A4E7FBB21DE44E2700E14AEE;
+			productRefGroup = A4E7FBBC1DE44E2700E14AEE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4E7FBBA1DE44E2700E14AEE /* OctoAPI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4E7FBB91DE44E2700E14AEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E7FBC91DE44E2700E14AEE /* LaunchScreen.storyboard in Resources */,
+				A4E7FBC61DE44E2700E14AEE /* Assets.xcassets in Resources */,
+				A4E7FBC41DE44E2700E14AEE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CCC51E5284AEA9D002E8975 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OctoAPI/Pods-OctoAPI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9590BBD901BFF11612C3A6E1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OctoAPI/Pods-OctoAPI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8E74CCB20203F80C157FBA9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4E7FBB71DE44E2700E14AEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A49E95561DE44E6500FD99D4 /* OctoRequest.swift in Sources */,
+				A49E95581DE44E6500FD99D4 /* GlossDataParser.swift in Sources */,
+				A49E955B1DE44E6500FD99D4 /* Callable.swift in Sources */,
+				A49E95551DE44E6500FD99D4 /* OctoAdapter.swift in Sources */,
+				A49E954D1DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift in Sources */,
+				A49E95531DE44E6500FD99D4 /* OAuthRequest.swift in Sources */,
+				A49E956A1DE4504100FD99D4 /* GRBlogPost.swift in Sources */,
+				A49E954E1DE44E6500FD99D4 /* Credentials.swift in Sources */,
+				A49E955C1DE44E6500FD99D4 /* DataParser.swift in Sources */,
+				A4F57FD41DE851E700545F34 /* GetResponseBlogPaging.swift in Sources */,
+				A49E955D1DE44E6500FD99D4 /* PagingParameters.swift in Sources */,
+				A49E955A1DE44E6500FD99D4 /* Authorizable.swift in Sources */,
+				A49E95501DE44E6500FD99D4 /* Paging.swift in Sources */,
+				A49E95521DE44E6500FD99D4 /* StringExtension.swift in Sources */,
+				A454D2C91DE5995800B69E06 /* ExamplesTableViewController.swift in Sources */,
+				A4E7FBBF1DE44E2700E14AEE /* AppDelegate.swift in Sources */,
+				A49E95681DE4504100FD99D4 /* GetResponseBlogExample.swift in Sources */,
+				A49E95571DE44E6500FD99D4 /* OctoConnector.swift in Sources */,
+				A49E95541DE44E6500FD99D4 /* OAuthToken.swift in Sources */,
+				A49E954F1DE44E6500FD99D4 /* GlobalVariables.swift in Sources */,
+				A4180DE61DE7373600783352 /* AuthorizationParameters.swift in Sources */,
+				A49E95591DE44E6500FD99D4 /* Adapter.swift in Sources */,
+				A49E95671DE4504100FD99D4 /* GetResponseBlogConnector.swift in Sources */,
+				A49E95511DE44E6500FD99D4 /* RunnableExample.swift in Sources */,
+				A49E95651DE4504100FD99D4 /* GetResponseBlogAdapter.swift in Sources */,
+				A454D2CB1DE5A02D00B69E06 /* BaseExample.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4E7FBC21DE44E2700E14AEE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E7FBC31DE44E2700E14AEE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A4E7FBC71DE44E2700E14AEE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E7FBC81DE44E2700E14AEE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4E7FBCB1DE44E2700E14AEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A4E7FBCC1DE44E2700E14AEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4E7FBCE1DE44E2700E14AEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59BE570EE8ADB6975CB4EF20 /* Pods-OctoAPI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OctoAPI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maciejkolek.OctoAPI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A4E7FBCF1DE44E2700E14AEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E375C15B776C88FAF0FDB324 /* Pods-OctoAPI.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OctoAPI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maciejkolek.OctoAPI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4E7FBB61DE44E2700E14AEE /* Build configuration list for PBXProject "OctoAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E7FBCB1DE44E2700E14AEE /* Debug */,
+				A4E7FBCC1DE44E2700E14AEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4E7FBCD1DE44E2700E14AEE /* Build configuration list for PBXNativeTarget "OctoAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E7FBCE1DE44E2700E14AEE /* Debug */,
+				A4E7FBCF1DE44E2700E14AEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4E7FBB31DE44E2700E14AEE /* Project object */;
+}
