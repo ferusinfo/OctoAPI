@@ -33,6 +33,7 @@ public enum AuthorizationMode : String {
 
 public protocol AuthorizableDelegate : class {
     func authorizationDataDidChange()
+    func isPerformingReauthorization()
 }
 
 public protocol Authorizable {
@@ -110,8 +111,13 @@ extension Authorizable {
     public func performOperationOnAuthorization(mode: AuthorizationMode, parameters: Parameters?, completion: @escaping (_ error: Error?) -> Void) -> Void {
         var headers : HTTPHeaders = [:]
         
-        if mode == .reauthorization, let reauthHeader = reauthorizationHeader {
-            headers = reauthHeader
+        
+        if mode == .reauthorization {
+            self.delegate?.isPerformingReauthorization()
+            
+            if let reauthHeader = reauthorizationHeader {
+                headers = reauthHeader
+            }
         }
         
         let authorizationEndpoint = configParams.baseURL + configParams.endpoint
