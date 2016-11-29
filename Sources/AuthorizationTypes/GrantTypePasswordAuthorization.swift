@@ -27,8 +27,9 @@ import Alamofire
 import Gloss
 
 public class GrantTypePasswordAuthorization : Authorizable {
+    public var delegate: AuthorizableDelegate?
     
-    var isReauthorizingToken : Bool = false
+    public var isReauthorizingToken : Bool = false
     var reauthorizingLimit : Int = 20
     var reauthorizingCount : Int = 0
     private var _parameters : AuthorizationParameters

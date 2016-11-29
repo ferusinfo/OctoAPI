@@ -25,7 +25,7 @@
 
 import Alamofire
 
-open class OctoConnector : Callable {
+open class OctoConnector : NSObject, Callable {
     open var adapter: Adapter {
         get {
             return OctoAdapter()
@@ -43,7 +43,8 @@ open class OctoConnector : Callable {
     
     var calls : [Request] = []
     
-    required public init() {
+    required public override init() {
+        super.init()
         setup()
     }
 }

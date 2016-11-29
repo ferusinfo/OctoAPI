@@ -31,7 +31,12 @@ public enum AuthorizationMode : String {
     case reauthorization = "re_auth"
 }
 
+public protocol AuthorizableDelegate : class {
+    func authorizationDataDidChange()
+}
+
 public protocol Authorizable {
+    weak var delegate : AuthorizableDelegate? {get set}
     var configParams : AuthorizationParameters { get }
     var credentials : Credentials { get }
     var authorizationHeader : HTTPHeaders { get }
@@ -118,6 +123,7 @@ extension Authorizable {
                     
                     if let parsed = self.parse(credentials: data) {
                         self.credentials.save(credentials: parsed)
+                        self.delegate?.authorizationDataDidChange()
                         completion(nil)
                     } else {
                         completion(nil)

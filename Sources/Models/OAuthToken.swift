@@ -25,7 +25,7 @@
 
 import Gloss
 
-public class OAuthToken : Decodable, Encodable {
+public class OAuthToken : NSObject, Decodable, Encodable {
     
     // MARK: - Keys
     private let AccessTokenKey = "access_token"
@@ -58,7 +58,7 @@ public class OAuthToken : Decodable, Encodable {
     }
     
     // MARK: - Serialization
-    public func toJSON() -> JSON? {
+    @objc public func toJSON() -> JSON? {
         return jsonify([
             AccessTokenKey ~~> self.accessToken,
             ExpiresInKey ~~> self.expiresIn,
