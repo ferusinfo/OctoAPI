@@ -77,13 +77,16 @@ extension Callable {
         
         let endpoint = adapter.versionedURL.appending(request.endpoint)
         
-        var url = URLComponents(string: endpoint)!
         
+        guard let url = URL(string: endpoint), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            else { completion(self.errorOccured(code: 500, localizedDescription: "Could not parse the endpoint URL"), nil, nil); return}
+        
+
         if let paging = request.paging, let params = paging.queryParameters() {
-            if let queryItems = url.queryItems {
-                url.queryItems = queryItems + params
+            if let queryItems = urlComponents.queryItems {
+                urlComponents.queryItems = queryItems + params
             } else {
-                url.queryItems = params
+                urlComponents.queryItems = params
             }
         }
         
@@ -93,7 +96,7 @@ extension Callable {
             headers = authorizer.authorizationHeader
         }
         
-        let alamoRequest = manager.request(url, method: request.method, parameters: request.parameters, encoding: request.method == .get ? URLEncoding.default : request.encoding, headers: headers)
+        let alamoRequest = manager.request(urlComponents, method: request.method, parameters: request.parameters, encoding: request.method == .get ? URLEncoding.default : request.encoding, headers: headers)
             .validate()
             .responseJSON { response in
             switch response.result {
@@ -137,6 +140,14 @@ extension Callable {
         }
         
         send(request: alamoRequest)
+    }
+    
+    func errorOccured(code: Int, localizedDescription: String) -> Error {
+        let userInfo = [
+             NSLocalizedDescriptionKey :  NSLocalizedString(localizedDescription, comment: "")
+        ]
+        
+        return NSError(domain: adapter.errorDomain, code: code, userInfo: userInfo)
     }
     
     public func performOnQueue(action : ActionType) {
