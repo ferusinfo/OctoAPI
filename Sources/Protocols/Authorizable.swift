@@ -121,7 +121,7 @@ extension Authorizable {
         }
         
         let authorizationEndpoint = configParams.baseURL + configParams.endpoint
-        
+
         let req = Alamofire.request(authorizationEndpoint, method: .post, parameters: parameters, headers: headers).validate()
             .responseJSON {  response in
                 switch response.result {

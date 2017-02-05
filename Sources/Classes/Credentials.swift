@@ -28,7 +28,7 @@ import Alamofire
 open class Credentials {
     let keychain : Keychain
     let keychainCredentialsKey : String
-    var savedAt : Date? {
+    open var savedAt : Date? {
         get {
             if let attrs = self.keychain[attributes: keychainCredentialsKey] {
                 return attrs.creationDate
@@ -42,19 +42,19 @@ open class Credentials {
         self.keychainCredentialsKey = keychainService + ".credentials"
     }
     
-    func save(credentials: Parameters) {
+    open func save(credentials: Parameters) {
         self.removeCredentials()
         self.keychain[data: keychainCredentialsKey] = NSKeyedArchiver.archivedData(withRootObject: credentials)
     }
     
-    func getCredentials() -> Parameters? {
+    open func getCredentials() -> Parameters? {
         if let data = self.keychain[data: keychainCredentialsKey], let credentials = NSKeyedUnarchiver.unarchiveObject(with: data) as? Parameters {
             return credentials
         }
         return nil
     }
     
-    func removeCredentials() {
+    open func removeCredentials() {
         self.keychain[keychainCredentialsKey] = nil
     }
 }

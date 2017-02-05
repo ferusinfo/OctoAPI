@@ -60,8 +60,7 @@ public protocol Adapter {
 extension Adapter {
     public var baseURL : String {
         get {
-            let url = mode == .production ? productionURL : sandboxURL
-            return url
+            return mode == .production ? productionURL : sandboxURL
         }
     }
     
