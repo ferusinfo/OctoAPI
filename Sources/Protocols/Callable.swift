@@ -30,7 +30,7 @@ public protocol Callable : class {
     var adapter : Adapter { get }
     var authorizer : Authorizable? { get }
     var callsQueue : [Alamofire.Request] { get set }
-    func run(request: OctoRequest, completion: @escaping (_ error: Error?, _ data: Any?, _ paging: Paging?) -> Void) -> Void
+    @discardableResult func run(request: OctoRequest, completion: @escaping (_ error: Error?, _ data: Any?, _ paging: Paging?) -> Void) -> Request?
     func send(request: Alamofire.Request) -> Void
     func performOnQueue(action : ActionType) -> Void
     func setup() -> Void
@@ -71,7 +71,8 @@ extension Callable {
         }
     }
     
-    public func run(request: OctoRequest, completion: @escaping (_ error: Error?, _ data: Any?, _ paging: Paging?) -> Void) -> Void {
+    @discardableResult
+    public func run(request: OctoRequest, completion: @escaping (_ error: Error?, _ data: Any?, _ paging: Paging?) -> Void) -> Request? {
         
         var headers : HTTPHeaders = [:]
         
@@ -79,7 +80,7 @@ extension Callable {
         
         
         guard let url = URL(string: endpoint), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-            else { completion(self.errorOccured(code: 500, localizedDescription: "Could not parse the endpoint URL"), nil, nil); return}
+            else { completion(self.errorOccured(code: 500, localizedDescription: "Could not parse the endpoint URL"), nil, nil); return nil}
         
 
         if let paging = request.paging, let params = paging.queryParameters() {
@@ -140,6 +141,7 @@ extension Callable {
         }
         
         send(request: alamoRequest)
+        return alamoRequest
     }
     
     func errorOccured(code: Int, localizedDescription: String) -> Error {
