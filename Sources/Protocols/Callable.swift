@@ -27,7 +27,7 @@ import Alamofire
 
 public protocol Callable : class {
     var manager : Alamofire.SessionManager { get }
-    var debugger : OctoDebugger? {get}
+    var logger : OctoLogger? {get}
     var adapter : Adapter { get }
     var authorizer : Authorizable? { get }
     var callsQueue : [Alamofire.Request] { get set }
@@ -45,8 +45,8 @@ public enum ActionType : String {
 
 extension Callable {
     
-    public var debugger : OctoDebugger? {
-        return nil
+    public var logger : OctoLogger? {
+        return adapter.logger
     }
     
     public func setup() {
@@ -102,13 +102,13 @@ extension Callable {
             headers = authorizer.authorizationHeader
         }
         
-        self.debugger?.log(request: request, withEndpoint: urlComponents)
+        self.logger?.log(request: request, withEndpoint: urlComponents)
         
         let alamoRequest = manager.request(urlComponents, method: request.method, parameters: request.parameters, encoding: request.method == .get ? URLEncoding.default : request.encoding, headers: headers)
             .validate()
             .responseJSON { response in
             
-            self.debugger?.log(response: response)
+            self.logger?.log(response: response)
                 
             switch response.result {
             case .success(let data):
@@ -118,13 +118,13 @@ extension Callable {
                     paging = Paging(offset: pager.offset, limit: pager.limit, response: response)
                 }
                 
-                self.debugger?.log(data: data, withResponse: response)
+                self.logger?.log(data: data, withResponse: response)
                 completion(nil, data, paging)
             case .failure(let error):
-                self.debugger?.log(error: error, withResponse: response)
+                self.logger?.log(error: error, withResponse: response)
                 if let response = response.response, response.statusCode == 401, var authorizer = self.adapter.authorizer, authorizer.isReauthorizable, authorizer.shouldReauthorize() {
                     authorizer.logFailure()
-                    self.debugger?.log(string: "Performing token reauthorization")
+                    self.logger?.log(string: "Performing token reauthorization")
                     let lockQueue = DispatchQueue(label: "octo.lock.reauth")
                     lockQueue.sync() {
                         if !authorizer.isReauthorizing {
@@ -132,14 +132,14 @@ extension Callable {
                             
                             authorizer.performReauthorization(completion: { (error) in
                                 if error == nil {
-                                    self.debugger?.log(string: "Token reauthorization successful")
+                                    self.logger?.log(string: "Token reauthorization successful")
                                     authorizer.isReauthorizing = false
                                     self.performOnQueue(action: .resume)
                                     self.run(request: request, completion: completion)
                                 } else {
-                                    self.debugger?.log(string: "Could not perform token reauthorization")
+                                    self.logger?.log(string: "Could not perform token reauthorization")
                                     self.performOnQueue(action: .cancel)
-                                    self.debugger?.log(error: error!)
+                                    self.logger?.log(error: error!)
                                     completion(error, nil, nil)
                                 }
                             })

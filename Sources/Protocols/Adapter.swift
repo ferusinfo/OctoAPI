@@ -56,8 +56,11 @@ public protocol Adapter {
     /* Authorization object - set to nil if your API does not require authorization */
     var authorizer : Authorizable? { get }
     
-    var logLevel : DebugMode { get }
+    var logLevel : LogLevel { get }
+    
+    var logger : OctoLogger? { get }
 }
+
 
 extension Adapter {
     public var baseURL : String {
@@ -80,9 +83,15 @@ extension Adapter {
         }
     }
     
-    public var logLevel : DebugMode {
+    public var logLevel : LogLevel {
         get {
             return .none
+        }
+    }
+    
+    public var logger : OctoLogger? {
+        get {
+            return nil
         }
     }
 }
