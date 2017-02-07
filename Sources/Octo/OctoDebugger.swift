@@ -42,25 +42,44 @@ public class OctoDebugger {
     }
     
     func log(response: DataResponse<Any>) {
-        if [.none,.error].contains(self.mode) {
+        
+        switch self.mode {
+        case .none:
             return
+        case .error:
+            if let resp = response.response, resp.statusCode == 200 {
+                return
+            }
+            break
+        default:
+            break
         }
-        self.log(string: "\(response.response!.statusCode) - \(response.request!.httpMethod!.uppercased()) \(response.request!.url!)")
+        
+        if let resp = response.response, let request = response.request, let httpMethod = request.httpMethod, let url = request.url {
+            self.log(string: "\(resp.statusCode) - \(httpMethod.uppercased()) \(url)")
+        }
     }
     
-    func log(response: DataResponse<Any>, data: Any) {
-        
-        self.log(response: response)
-        
-        if self.mode == .debug {
-            self.log(string: "\nHeaders:\n\(response.response!.allHeaderFields)\nResponse data:\n\(data)")
+    func log(data: Any, withResponse response: DataResponse<Any>) {
+        if self.mode == .debug, let resp = response.response {
+            self.log(string: "\nHeaders:\n\(self.printHeaders(resp.allHeaderFields))\nResponse data:\n\(data)")
         }
     }
     
-    func log(response: DataResponse<Any>, withError error: Error) {
-        
-        self.log(response: response)
-        
+    func printHeaders(_ headers: [AnyHashable : Any]) -> String {
+        var headersString = ""
+        for (key,value) in headers {
+            headersString += "[\(key)]=\(value); "
+        }
+        return headersString
+    }
+    
+    func log(error: Error) {
+        self.log(string: error.localizedDescription)
+    }
+    
+    func log(error: Error, withResponse response: DataResponse<Any>) {
+
         guard self.mode != .none else {
             return
         }
@@ -71,10 +90,6 @@ public class OctoDebugger {
         }
         
         self.log(string: logString)
-    }
-    
-    func responseLogString(response: DataResponse<Any>) -> String {
-        return "\(response.response!.statusCode) - \(response.request!.httpMethod!.uppercased()) \(response.request!.url!)"
     }
     
     func log(string: String) {

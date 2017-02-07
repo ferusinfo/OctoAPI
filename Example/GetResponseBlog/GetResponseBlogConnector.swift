@@ -26,6 +26,7 @@
 import Alamofire
 
 class GetResponseBlogConnector : OctoConnector {
+    
     static let sharedInstance = GetResponseBlogConnector()
     
     override var adapter: Adapter {

@@ -30,7 +30,7 @@ struct GetResponseBlogAdapter : Adapter {
     var authorizer: Authorizable? = nil
     var errorDomain: String = "com.getresponse.GetResponseBlog.error"
     var productionVersion: String = "v2"
-    var logLevel: DebugMode = .error
+    var logLevel: DebugMode = .debug
     
     var productionURL: String {
         get {

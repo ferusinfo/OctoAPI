@@ -107,6 +107,9 @@ extension Callable {
         let alamoRequest = manager.request(urlComponents, method: request.method, parameters: request.parameters, encoding: request.method == .get ? URLEncoding.default : request.encoding, headers: headers)
             .validate()
             .responseJSON { response in
+            
+            self.debugger?.log(response: response)
+                
             switch response.result {
             case .success(let data):
                 self.authorizer?.logSuccess()
@@ -115,14 +118,13 @@ extension Callable {
                     paging = Paging(offset: pager.offset, limit: pager.limit, response: response)
                 }
                 
-                self.debugger?.log(response: response, data: data)
-                   
-                
+                self.debugger?.log(data: data, withResponse: response)
                 completion(nil, data, paging)
             case .failure(let error):
+                self.debugger?.log(error: error, withResponse: response)
                 if let response = response.response, response.statusCode == 401, var authorizer = self.adapter.authorizer, authorizer.isReauthorizable, authorizer.shouldReauthorize() {
                     authorizer.logFailure()
-                    
+                    self.debugger?.log(string: "Performing token reauthorization")
                     let lockQueue = DispatchQueue(label: "octo.lock.reauth")
                     lockQueue.sync() {
                         if !authorizer.isReauthorizing {
@@ -130,11 +132,14 @@ extension Callable {
                             
                             authorizer.performReauthorization(completion: { (error) in
                                 if error == nil {
+                                    self.debugger?.log(string: "Token reauthorization successful")
                                     authorizer.isReauthorizing = false
                                     self.performOnQueue(action: .resume)
                                     self.run(request: request, completion: completion)
                                 } else {
+                                    self.debugger?.log(string: "Could not perform token reauthorization")
                                     self.performOnQueue(action: .cancel)
+                                    self.debugger?.log(error: error!)
                                     completion(error, nil, nil)
                                 }
                             })
@@ -143,7 +148,6 @@ extension Callable {
                         }
                     }
                 } else {
-                    self.debugger?.log(response: response, withError: error)
                     completion(error, nil, nil)
                 }
 
