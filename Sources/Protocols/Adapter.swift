@@ -55,6 +55,8 @@ public protocol Adapter {
     
     /* Authorization object - set to nil if your API does not require authorization */
     var authorizer : Authorizable? { get }
+    
+    var logLevel : DebugMode { get }
 }
 
 extension Adapter {
@@ -75,6 +77,12 @@ extension Adapter {
     public var parserErrorCode : Int {
         get {
             return 428
+        }
+    }
+    
+    public var logLevel : DebugMode {
+        get {
+            return .none
         }
     }
 }

@@ -47,4 +47,21 @@ open class OctoConnector : NSObject, Callable {
         super.init()
         setup()
     }
+    
+    lazy var storedDebugger : OctoDebugger = {
+        let debugger = OctoDebugger()
+        debugger.delegate = self
+        debugger.mode = self.adapter.logLevel
+        return debugger
+    }()
+    
+    public var debugger: OctoDebugger? {
+        return storedDebugger
+    }
+}
+
+extension OctoConnector : DebuggerDelegate {
+    public func logEventOccured(logString: String) {
+        //stub, implementation of the delegate should be in subclasses
+    }
 }

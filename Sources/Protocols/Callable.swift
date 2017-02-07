@@ -27,6 +27,7 @@ import Alamofire
 
 public protocol Callable : class {
     var manager : Alamofire.SessionManager { get }
+    var debugger : OctoDebugger? {get}
     var adapter : Adapter { get }
     var authorizer : Authorizable? { get }
     var callsQueue : [Alamofire.Request] { get set }
@@ -43,6 +44,10 @@ public enum ActionType : String {
 }
 
 extension Callable {
+    
+    public var debugger : OctoDebugger? {
+        return nil
+    }
     
     public func setup() {
         manager.startRequestsImmediately = false
@@ -97,17 +102,21 @@ extension Callable {
             headers = authorizer.authorizationHeader
         }
         
+        self.debugger?.log(request: request, withEndpoint: urlComponents)
+        
         let alamoRequest = manager.request(urlComponents, method: request.method, parameters: request.parameters, encoding: request.method == .get ? URLEncoding.default : request.encoding, headers: headers)
             .validate()
             .responseJSON { response in
             switch response.result {
             case .success(let data):
                 self.authorizer?.logSuccess()
-                
                 var paging : Paging?
                 if let response = response.response, let pager = request.paging {
                     paging = Paging(offset: pager.offset, limit: pager.limit, response: response)
                 }
+                
+                self.debugger?.log(response: response, data: data)
+                   
                 
                 completion(nil, data, paging)
             case .failure(let error):
@@ -134,6 +143,7 @@ extension Callable {
                         }
                     }
                 } else {
+                    self.debugger?.log(response: response, withError: error)
                     completion(error, nil, nil)
                 }
 
