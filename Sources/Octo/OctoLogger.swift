@@ -75,7 +75,7 @@ public class OctoLogger {
         }
         
         var logString = "Error: \(error.localizedDescription)"
-        if self.mode == .debug, let data = response.data, let rawData = String(data: data, encoding: String.Encoding.utf8) {
+        if let data = response.data, let rawData = String(data: data, encoding: String.Encoding.utf8) {
             logString += "\n\(rawData)"
         }
 
