@@ -45,6 +45,7 @@ public protocol Authorizable {
     var reauthorizationParameters : Parameters? { get }
     var isReauthorizing : Bool { get set }
     var isReauthorizable : Bool { get }
+    var logger : OctoLogger? { get }
     
     func authorizationParameters(login: String, password: String) -> Parameters?
     func performAuthorization(login: String, password: String, completion: @escaping (_ error: Error?) -> Void) -> Void
@@ -94,6 +95,10 @@ extension Authorizable {
         credentials.removeCredentials()
     }
     
+    public var logger : OctoLogger? {
+        return nil
+    }
+    
     public var credentials : Credentials {
         get {
             return Credentials(keychainService: configParams.serviceName)
@@ -111,6 +116,8 @@ extension Authorizable {
     public func performOperationOnAuthorization(mode: AuthorizationMode, parameters: Parameters?, completion: @escaping (_ error: Error?) -> Void) -> Void {
         var headers : HTTPHeaders = [:]
         
+        self.logger?.log(string: "Starting authorization!")
+        
         
         if mode == .reauthorization {
             self.delegate?.isPerformingReauthorization()
@@ -124,9 +131,9 @@ extension Authorizable {
 
         let req = Alamofire.request(authorizationEndpoint, method: .post, parameters: parameters, headers: headers).validate()
             .responseJSON {  response in
+                self.logger?.log(response: response)
                 switch response.result {
                 case .success(let data):
-                    
                     if let parsed = self.parse(credentials: data) {
                         self.credentials.save(credentials: parsed)
                         self.delegate?.authorizationDataDidChange()
@@ -135,10 +142,7 @@ extension Authorizable {
                         completion(nil)
                     }
                 case .failure(let error):
-                    
-                    if let data = response.data {
-                        print("Response data: \(String(data: data, encoding: String.Encoding.utf8)!)")
-                    }
+                    self.logger?.log(error: error, withResponse: response)
                     completion(error)
                 }
         }

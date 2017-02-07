@@ -33,6 +33,7 @@ public class GrantTypePasswordAuthorization : Authorizable {
     var reauthorizingLimit : Int = 20
     var reauthorizingCount : Int = 0
     private var _parameters : AuthorizationParameters
+    public var storedLogger : OctoLogger? = nil
     
     required public init(parameters: AuthorizationParameters) {
         _parameters = parameters
@@ -42,6 +43,10 @@ public class GrantTypePasswordAuthorization : Authorizable {
         get {
             return _parameters
         }
+    }
+    
+    public var logger: OctoLogger? {
+        return storedLogger
     }
     
     public func logSuccess() {

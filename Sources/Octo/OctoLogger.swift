@@ -42,17 +42,8 @@ public class OctoLogger {
     }
     
     public func log(response: DataResponse<Any>) {
-        
-        switch self.mode {
-        case .none:
+        if [.none,.error].contains(self.mode) {
             return
-        case .error:
-            if let resp = response.response, resp.statusCode == 200 {
-                return
-            }
-            break
-        default:
-            break
         }
         
         self.log(event: OctoLog(response: response))
@@ -65,6 +56,10 @@ public class OctoLogger {
     }
     
     public func log(error: Error) {
+        guard self.mode != .none else {
+            return
+        }
+        
         self.log(event: OctoLog(error: error))
     }
     
@@ -74,7 +69,26 @@ public class OctoLogger {
             return
         }
         
-        var logString = "Error: \(error.localizedDescription)"
+        var logString = ""
+        
+        if self.mode == .error {
+            if let prettyResponse = OctoLog.pretty(response: response) {
+               logString += prettyResponse + "\n"
+            }
+            
+            if let request = response.request {
+                if let headers = request.allHTTPHeaderFields {
+                    logString += "Headers: \(OctoLog.printHeaders(headers))\n"
+                }
+                
+                if let data = request.httpBody, let rawData = String(data: data, encoding: String.Encoding.utf8) {
+                    logString += "Body: \(rawData)\n"
+                }
+                
+            }
+        }
+        
+        logString += "Error: \(error.localizedDescription)"
         if let data = response.data, let rawData = String(data: data, encoding: String.Encoding.utf8) {
             logString += "\n\(rawData)"
         }
@@ -83,6 +97,10 @@ public class OctoLogger {
     }
     
     public func log(string: String) {
+        if [.none,.error].contains(self.mode) {
+            return
+        }
+        
         self.log(event: OctoLog(logString: string))
     }
     

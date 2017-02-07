@@ -43,8 +43,8 @@ public class OctoLog : CustomStringConvertible {
     
     convenience init(response: DataResponse<Any>, date: Date = Date()) {
         var logString = "--"
-        if let resp = response.response, let request = response.request, let httpMethod = request.httpMethod, let url = request.url {
-            logString = "\(resp.statusCode) - \(httpMethod.uppercased()) \(url)"
+        if let prettyResp = OctoLog.pretty(response: response) {
+            logString = prettyResp
         }
         
         self.init(logString: logString, date: date)
@@ -60,6 +60,13 @@ public class OctoLog : CustomStringConvertible {
         
         self.init(logString: logString, date: date)
         self.response = response
+    }
+    
+    static func pretty(response: DataResponse<Any>) -> String? {
+        if let resp = response.response, let request = response.request, let httpMethod = request.httpMethod, let url = request.url {
+            return "\(resp.statusCode) - \(httpMethod.uppercased()) \(url)"
+        }
+        return nil
     }
     
     static func printHeaders(_ headers: [AnyHashable : Any]) -> String {
