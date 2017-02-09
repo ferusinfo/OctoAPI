@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0D2124AE303D16B1D1C5DB5F /* Pods_OctoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340BE7D1EB63C9C1FC8B24E8 /* Pods_OctoAPI.framework */; };
-		A40F45A21E49C7B900C40EA6 /* OctoDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F45A11E49C7B900C40EA6 /* OctoDebugger.swift */; };
 		A4180DE61DE7373600783352 /* AuthorizationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4180DE51DE7373600783352 /* AuthorizationParameters.swift */; };
 		A454D2C91DE5995800B69E06 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A454D2C81DE5995800B69E06 /* ExamplesTableViewController.swift */; };
 		A454D2CB1DE5A02D00B69E06 /* BaseExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = A454D2CA1DE5A02D00B69E06 /* BaseExample.swift */; };
+		A465862F1E4C737D00FC1EA8 /* OctoLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A465862D1E4C737D00FC1EA8 /* OctoLogger.swift */; };
+		A46586301E4C737D00FC1EA8 /* OctoLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A465862E1E4C737D00FC1EA8 /* OctoLog.swift */; };
 		A49E954D1DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95361DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift */; };
 		A49E954E1DE44E6500FD99D4 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95381DE44E6500FD99D4 /* Credentials.swift */; };
 		A49E954F1DE44E6500FD99D4 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95391DE44E6500FD99D4 /* GlobalVariables.swift */; };
@@ -43,10 +44,11 @@
 /* Begin PBXFileReference section */
 		340BE7D1EB63C9C1FC8B24E8 /* Pods_OctoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OctoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59BE570EE8ADB6975CB4EF20 /* Pods-OctoAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OctoAPI/Pods-OctoAPI.debug.xcconfig"; sourceTree = "<group>"; };
-		A40F45A11E49C7B900C40EA6 /* OctoDebugger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoDebugger.swift; sourceTree = "<group>"; };
 		A4180DE51DE7373600783352 /* AuthorizationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationParameters.swift; sourceTree = "<group>"; };
 		A454D2C81DE5995800B69E06 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
 		A454D2CA1DE5A02D00B69E06 /* BaseExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseExample.swift; sourceTree = "<group>"; };
+		A465862D1E4C737D00FC1EA8 /* OctoLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoLogger.swift; sourceTree = "<group>"; };
+		A465862E1E4C737D00FC1EA8 /* OctoLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoLog.swift; sourceTree = "<group>"; };
 		A49E95361DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrantTypePasswordAuthorization.swift; sourceTree = "<group>"; };
 		A49E95381DE44E6500FD99D4 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		A49E95391DE44E6500FD99D4 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
@@ -157,7 +159,8 @@
 				A49E95421DE44E6500FD99D4 /* OctoAdapter.swift */,
 				A49E95431DE44E6500FD99D4 /* OctoRequest.swift */,
 				A49E95441DE44E6500FD99D4 /* OctoConnector.swift */,
-				A40F45A11E49C7B900C40EA6 /* OctoDebugger.swift */,
+				A465862D1E4C737D00FC1EA8 /* OctoLogger.swift */,
+				A465862E1E4C737D00FC1EA8 /* OctoLog.swift */,
 			);
 			path = Octo;
 			sourceTree = "<group>";
@@ -371,13 +374,14 @@
 				A49E955D1DE44E6500FD99D4 /* PagingParameters.swift in Sources */,
 				A49E955A1DE44E6500FD99D4 /* Authorizable.swift in Sources */,
 				A49E95501DE44E6500FD99D4 /* Paging.swift in Sources */,
+				A46586301E4C737D00FC1EA8 /* OctoLog.swift in Sources */,
 				A49E95521DE44E6500FD99D4 /* StringExtension.swift in Sources */,
 				A454D2C91DE5995800B69E06 /* ExamplesTableViewController.swift in Sources */,
 				A4E7FBBF1DE44E2700E14AEE /* AppDelegate.swift in Sources */,
 				A49E95681DE4504100FD99D4 /* GetResponseBlogExample.swift in Sources */,
-				A40F45A21E49C7B900C40EA6 /* OctoDebugger.swift in Sources */,
 				A49E95571DE44E6500FD99D4 /* OctoConnector.swift in Sources */,
 				A49E95541DE44E6500FD99D4 /* OAuthToken.swift in Sources */,
+				A465862F1E4C737D00FC1EA8 /* OctoLogger.swift in Sources */,
 				A49E954F1DE44E6500FD99D4 /* GlobalVariables.swift in Sources */,
 				A4180DE61DE7373600783352 /* AuthorizationParameters.swift in Sources */,
 				A49E95591DE44E6500FD99D4 /* Adapter.swift in Sources */,

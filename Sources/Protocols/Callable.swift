@@ -97,12 +97,11 @@ extension Callable {
         }
         
         //TODO: Add sorting here
-        
-        if let authorizer = adapter.authorizer, authorizer.isAuthorized() && !authorizer.isReauthorizing {
-            headers = authorizer.authorizationHeader
-        }
-        
         self.logger?.log(request: request, withEndpoint: urlComponents)
+        if let authorizer = adapter.authorizer, authorizer.isAuthorized() {
+            headers = authorizer.authorizationHeader
+            self.logger?.log(string: "Headers: \(headers)")
+        }
         
         let alamoRequest = manager.request(urlComponents, method: request.method, parameters: request.parameters, encoding: request.method == .get ? URLEncoding.default : request.encoding, headers: headers)
             .validate()
@@ -122,25 +121,30 @@ extension Callable {
                 completion(nil, data, paging)
             case .failure(let error):
                 self.logger?.log(error: error, withResponse: response)
-                if let response = response.response, response.statusCode == 401, var authorizer = self.adapter.authorizer, authorizer.isReauthorizable, authorizer.shouldReauthorize() {
-                    authorizer.logFailure()
+                self.authorizer?.logFailure()
+                if let response = response.response, response.statusCode == 401, var authorizer = self.adapter.authorizer, authorizer.isReauthorizable {
                     self.logger?.log(string: "Performing token reauthorization")
-                    let lockQueue = DispatchQueue(label: "octo.lock.reauth")
-                    lockQueue.sync() {
+                    
+                    DispatchQueue(label: "octo.reauth.lock").sync {
                         if !authorizer.isReauthorizing {
+                            
                             authorizer.isReauthorizing = true
                             
                             authorizer.performReauthorization(completion: { (error) in
                                 if error == nil {
                                     self.logger?.log(string: "Token reauthorization successful")
                                     authorizer.isReauthorizing = false
-                                    self.performOnQueue(action: .resume)
                                     self.run(request: request, completion: completion)
+                                    self.performOnQueue(action: .resume)
+                                    
                                 } else {
+                                    
                                     self.logger?.log(string: "Could not perform token reauthorization")
                                     self.performOnQueue(action: .cancel)
                                     self.logger?.log(error: error!)
+                                    
                                     completion(error, nil, nil)
+                                    
                                 }
                             })
                         } else {

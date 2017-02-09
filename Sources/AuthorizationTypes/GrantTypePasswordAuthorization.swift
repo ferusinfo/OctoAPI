@@ -58,7 +58,7 @@ public class GrantTypePasswordAuthorization : Authorizable {
     }
     
     public func shouldReauthorize() -> Bool {
-        return reauthorizingCount >= reauthorizingLimit
+        return reauthorizingCount <= reauthorizingLimit
     }
     
     public var isReauthorizable: Bool {
@@ -152,7 +152,7 @@ public class GrantTypePasswordAuthorization : Authorizable {
     }
     
     public func isAuthorized() -> Bool {
-        return token != nil && !shouldReauthorize()
+        return token != nil
     }
     
 }
