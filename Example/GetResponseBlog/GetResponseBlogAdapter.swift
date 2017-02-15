@@ -24,13 +24,20 @@
 //
 
 import Foundation
+import Alamofire
 
-struct GetResponseBlogAdapter : Adapter {
+class GetResponseBlogAdapter : Adapter {
     var mode: AdapterMode = .production
     var authorizer: Authorizable? = nil
     var errorDomain: String = "com.getresponse.GetResponseBlog.error"
     var productionVersion: String = "v2"
-    var logLevel: DebugMode = .debug
+    var logLevel: LogLevel = .debug
+    
+    var logger: OctoLogger? {
+        get {
+            return storedLogger
+        }
+    }
     
     var productionURL: String {
         get {
@@ -42,6 +49,11 @@ struct GetResponseBlogAdapter : Adapter {
         }
     }
     
+    lazy var storedLogger : OctoLogger = {
+        let logger = OctoLogger(logLevel: self.logLevel)
+        return logger
+    }()
+    
     var sandboxURL: String {
         get {
             return productionURL
@@ -51,6 +63,12 @@ struct GetResponseBlogAdapter : Adapter {
     var sandboxVersion: String {
         get {
             return productionVersion
+        }
+    }
+    
+    var perRequestHeaders: HTTPHeaders? {
+        get {
+            return ["Test-Header":"Test-Value"]
         }
     }
     

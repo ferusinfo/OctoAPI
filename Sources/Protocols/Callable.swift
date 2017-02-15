@@ -79,14 +79,10 @@ extension Callable {
     @discardableResult
     public func run(request: OctoRequest, completion: @escaping (_ error: Error?, _ data: Any?, _ paging: Paging?) -> Void) -> Request? {
         
-        var headers : HTTPHeaders = [:]
-        
         let endpoint = adapter.versionedURL.appending(request.endpoint)
-        
         
         guard let url = URL(string: endpoint), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
             else { completion(self.errorOccured(code: 500, localizedDescription: "Could not parse the endpoint URL"), nil, nil); return nil}
-        
 
         if let paging = request.paging, let params = paging.queryParameters() {
             if let queryItems = urlComponents.queryItems {
@@ -96,10 +92,24 @@ extension Callable {
             }
         }
         
+        var headers : HTTPHeaders = [:]
+        
+        if let requestHeaders = request.headers {
+            headers.update(other: requestHeaders)
+        }
+        
+        if let perRequestHeaders = adapter.perRequestHeaders {
+            headers.update(other: perRequestHeaders)
+        }
+        
+        if let authorizer = adapter.authorizer, authorizer.isAuthorized() {
+            headers.update(other: authorizer.authorizationHeader)
+        }
+        
         //TODO: Add sorting here
         self.logger?.log(request: request, withEndpoint: urlComponents)
-        if let authorizer = adapter.authorizer, authorizer.isAuthorized() {
-            headers = authorizer.authorizationHeader
+        
+        if !headers.isEmpty {
             self.logger?.log(string: "Headers: \(headers)")
         }
         
@@ -179,6 +189,14 @@ extension Callable {
                 request.cancel()
             }
             callsQueue.remove(at: index)
+        }
+    }
+}
+
+extension Dictionary {
+    mutating func update(other:Dictionary) {
+        for (key,value) in other {
+            self.updateValue(value, forKey:key)
         }
     }
 }

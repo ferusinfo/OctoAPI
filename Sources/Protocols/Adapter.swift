@@ -56,13 +56,20 @@ public protocol Adapter {
     /* Authorization object - set to nil if your API does not require authorization */
     var authorizer : Authorizable? { get }
     
+    /* Set your desired log level, defaults to .none */
     var logLevel : LogLevel { get }
     
+    /* Logger Object */
     var logger : OctoLogger? { get }
+    
+    /* If you need to add additional headers to your requests, add them here, defaults to nil */
+    var perRequestHeaders : HTTPHeaders? { get }
 }
 
 
 extension Adapter {
+    
+    
     public var baseURL : String {
         get {
             return mode == .production ? productionURL : sandboxURL
@@ -90,6 +97,12 @@ extension Adapter {
     }
     
     public var logger : OctoLogger? {
+        get {
+            return nil
+        }
+    }
+    
+    public var perRequestHeaders : HTTPHeaders? {
         get {
             return nil
         }

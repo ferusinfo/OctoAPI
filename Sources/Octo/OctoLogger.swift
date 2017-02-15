@@ -38,8 +38,6 @@ public class OctoLogger {
             logString += "\nParameters:\n\(params)"
         }
         
-        logString += "\n Headers: \(request.headers)"
-        
         self.log(event: OctoLog(logString: logString))
     }
     

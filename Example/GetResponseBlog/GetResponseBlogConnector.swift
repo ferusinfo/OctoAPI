@@ -33,8 +33,4 @@ class GetResponseBlogConnector : OctoConnector {
         return GetResponseBlogAdapter()
     }
     
-    override func logEventOccured(logString: String) {
-        print("log event occured!")
-    }
-    
 }

@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "OctoAPI"
-  s.version      = "0.1.3"
+  s.version      = "0.1.4"
   s.summary      = "Octo is a JSON API abstraction layer built on top of Alamofire for your iOS projects written in Swift 3"
   s.homepage     = "http://ferus.info"
   s.license      = "MIT"
@@ -22,6 +22,6 @@ Pod::Spec.new do |s|
   s.source_files  = "Sources/*/*"
   s.dependency 'Alamofire', '~> 4.0'
   s.dependency 'Gloss', '~> 1.1'
-  s.dependency 'HTMLString'
-  s.dependency 'KeychainAccess'
+  s.dependency 'HTMLString', '~> 1.0.2'
+  s.dependency 'KeychainAccess', '~> 3.0.1'
 end
