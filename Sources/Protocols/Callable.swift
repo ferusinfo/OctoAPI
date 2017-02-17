@@ -181,15 +181,15 @@ extension Callable {
     }
     
     public func performOnQueue(action : ActionType) {
-        for (index, request) in callsQueue.enumerated() {
+        for (_, request) in callsQueue.enumerated() {
             switch action {
             case .resume:
                 request.resume()
             case .cancel:
                 request.cancel()
             }
-            callsQueue.remove(at: index)
         }
+        callsQueue = []
     }
 }
 
