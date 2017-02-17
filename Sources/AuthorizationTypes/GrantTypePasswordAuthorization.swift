@@ -26,7 +26,7 @@
 import Alamofire
 import Gloss
 
-public class GrantTypePasswordAuthorization : Authorizable {
+open class GrantTypePasswordAuthorization : Authorizable {
     public var delegate: AuthorizableDelegate?
     
     public var isReauthorizingToken : Bool = false
@@ -102,7 +102,7 @@ public class GrantTypePasswordAuthorization : Authorizable {
         return OAuthRequest(username: login, password: password, clientID: configParams.clientID).toJSON()
     }
     
-    var reauthorizationModel : OAuthRequest? {
+    open var reauthorizationModel : OAuthRequest? {
         get {
             if let token = token {
                 let refresh = OAuthRequest()
@@ -124,7 +124,7 @@ public class GrantTypePasswordAuthorization : Authorizable {
         }
     }
     
-    public var reauthorizationHeader : HTTPHeaders? {
+    open var reauthorizationHeader : HTTPHeaders? {
         get {
             if let refresh = reauthorizationModel, let tokenHeader = refresh.refreshTokenHeader {
                 return ["Authorization" : tokenHeader ]

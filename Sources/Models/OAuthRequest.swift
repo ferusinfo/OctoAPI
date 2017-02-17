@@ -46,7 +46,7 @@ public class OAuthRequest : Encodable {
         case RefreshToken = "refresh_token"
     }
     
-    var refreshTokenHeader : String? {
+    public var refreshTokenHeader : String? {
         get {
             if let clientId = clientId {
                 return "Basic " + Data(String(format: "%@:", clientId).utf8).base64EncodedString()
