@@ -34,6 +34,7 @@
 		A49E95671DE4504100FD99D4 /* GetResponseBlogConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95611DE4504100FD99D4 /* GetResponseBlogConnector.swift */; };
 		A49E95681DE4504100FD99D4 /* GetResponseBlogExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95621DE4504100FD99D4 /* GetResponseBlogExample.swift */; };
 		A49E956A1DE4504100FD99D4 /* GRBlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95641DE4504100FD99D4 /* GRBlogPost.swift */; };
+		A4CD44BB1E5B15B300A01240 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD44BA1E5B15B300A01240 /* DictionaryExtension.swift */; };
 		A4E7FBBF1DE44E2700E14AEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */; };
 		A4E7FBC41DE44E2700E14AEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC21DE44E2700E14AEE /* Main.storyboard */; };
 		A4E7FBC61DE44E2700E14AEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC51DE44E2700E14AEE /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		A49E95611DE4504100FD99D4 /* GetResponseBlogConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogConnector.swift; sourceTree = "<group>"; };
 		A49E95621DE4504100FD99D4 /* GetResponseBlogExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogExample.swift; sourceTree = "<group>"; };
 		A49E95641DE4504100FD99D4 /* GRBlogPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRBlogPost.swift; sourceTree = "<group>"; };
+		A4CD44BA1E5B15B300A01240 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		A4E7FBBB1DE44E2700E14AEE /* OctoAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4E7FBC31DE44E2700E14AEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		A49E953C1DE44E6500FD99D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A4CD44BA1E5B15B300A01240 /* DictionaryExtension.swift */,
 				A49E953D1DE44E6500FD99D4 /* StringExtension.swift */,
 			);
 			path = Extensions;
@@ -362,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A49E95561DE44E6500FD99D4 /* OctoRequest.swift in Sources */,
+				A4CD44BB1E5B15B300A01240 /* DictionaryExtension.swift in Sources */,
 				A49E95581DE44E6500FD99D4 /* GlossDataParser.swift in Sources */,
 				A49E955B1DE44E6500FD99D4 /* Callable.swift in Sources */,
 				A49E95551DE44E6500FD99D4 /* OctoAdapter.swift in Sources */,

@@ -94,7 +94,7 @@ open class Paging : PagingParameters {
             self.resultsCount = totalInt
         }
         
-        if let pages = headers[resultsTotalCountParameter] as? String, let pagesInt = Int(pages) {
+        if let pages = headers[resultsTotalPagesParameter] as? String, let pagesInt = Int(pages) {
             self.totalPages = pagesInt
         }
         

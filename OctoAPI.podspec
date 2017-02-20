@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "OctoAPI"
-  s.version      = "0.1.6"
+  s.version      = "0.1.7"
   s.summary      = "Octo is a JSON API abstraction layer built on top of Alamofire for your iOS projects written in Swift 3"
   s.homepage     = "http://ferus.info"
   s.license      = "MIT"

@@ -124,7 +124,8 @@ extension Callable {
                 self.authorizer?.logSuccess()
                 var paging : Paging?
                 if let response = response.response, let pager = request.paging {
-                    paging = Paging(offset: pager.offset, limit: pager.limit, response: response)
+                    pager.parse(fromResponse: response)
+                    paging = pager
                 }
                 
                 self.logger?.log(data: data, withResponse: response)
