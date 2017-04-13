@@ -131,6 +131,14 @@ extension Callable {
                 self.logger?.log(data: data, withResponse: response)
                 completion(nil, data, paging)
             case .failure(let error):
+                //MEMO: We are forcing a success when the http code is between 201-204 to accept nil-content success
+                //See more: https://github.com/Alamofire/Alamofire/pull/889
+                
+                if let response = response.response, (201...204).contains(response.statusCode) {
+                    completion(nil, nil, nil)
+                    return
+                }
+                
                 self.logger?.log(error: error, withResponse: response)
                 self.authorizer?.logFailure()
                 if let response = response.response, response.statusCode == 401, var authorizer = self.adapter.authorizer, authorizer.isReauthorizable {
