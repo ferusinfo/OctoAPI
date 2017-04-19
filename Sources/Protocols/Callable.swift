@@ -161,7 +161,7 @@ extension Callable {
                                     self.logger?.log(string: "Could not perform token reauthorization")
                                     self.performOnQueue(action: .cancel)
                                     self.logger?.log(error: error!)
-                                    
+                                    authorizer.isReauthorizing = false
                                     completion(error, nil, nil)
                                     
                                 }
