@@ -26,7 +26,7 @@
 import Alamofire
 import Gloss
 
-public class OctoRequest {
+open class OctoRequest {
     public var endpoint : String = ""
     public var method : Alamofire.HTTPMethod = .get
     public var parameters : Alamofire.Parameters?
