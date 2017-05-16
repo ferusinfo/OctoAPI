@@ -1,24 +1,24 @@
-#OctoAPI
+# OctoAPI  
 ![CocoaPods](https://img.shields.io/cocoapods/v/OctoAPI.svg) ![license](https://img.shields.io/cocoapods/l/OctoAPI.svg) ![Platform](https://img.shields.io/cocoapods/p/OctoAPI.svg)
 
 Octo is a JSON API abstraction layer built on top of Alamofire for your iOS projects written in Swift 3.  
 It removes the usual and boring setup of API connectors with easy to use set of `Adapter`, `Connector`, `DataParser` and `Paging` classes.
 
-##Todo
+## Todo  
 1. Add custom logging
 2. Implement error mapping to JSON on call failure
 3. Unit Tests
 
-## Installation
+## Installation  
 1. Add `pod 'OctoAPI'` to your Podfile
 2. Run `pod install`
 3. Add `import OctoAPI` wherever you want to use the library
 
-##Example
+## Example  
 An example for GetResponse Blog API can be found in the Example directory of the project.  
 It uses no Authorization, making it perfect for testing public APIs.
 
-##Setup
+## Setup  
 For each of your APIs used in your project, you need to define a set of classes:
 
 - `OctoConnector` subclass - as a shared instance that you will be calling to make your calls to API with. It implements the `Callable` protocol under the hood. If you need more configuration than the Octo class is providing, you need to implement the `Callable` protocol in your custom class.
@@ -26,7 +26,7 @@ For each of your APIs used in your project, you need to define a set of classes:
 - `Authorization` class if your API requires authorization (Optional) 
 - `Paging` class if you want to use paging features in your API (Optional) 
 
-##Basic Usage
+## Basic Usage
 If you configure all the necessary classes, the basic usage is as follows:
 
 - You prepare your class using the `OctoRequest` class
