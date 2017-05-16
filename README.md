@@ -47,7 +47,7 @@ For each of your APIs used in your project, you need to define a set of classes:
 - `Authorization` class if your API requires authorization (Optional) 
 - `Paging` class if you want to use paging features in your API (Optional) 
 
-##Adapter
+## Adapter
 Adapter protocol class is holding the configuration for your API that is used in your project. Example:
 
 ```swift
@@ -68,7 +68,7 @@ struct ExampleAPIAdapter : Adapter {
 }
 ```
 
-##Parsing
+## Parsing
 You can use any object-parsing library of your choice. To use a custom parser in your project, simply implement `DataParser` protocol with two following methods:
 
 ```swift
@@ -91,14 +91,14 @@ if let examples = GlossDataParser.parse(collection: data, withType: ExampleModel
 ```
 
 
-##Paging
+## Paging
 If your API uses paging, create a subclass of `Paging` class, override the parameters to match your API needs and add it to the `OctoBuilder` class when building a request by passing `limit` and `offset` parameters to the initializer.
 
 Paging data parsed from the response is passed into the completion block through `paging` parameter.
 
 You can either use the default approach where paging information is added to the HTTP Headers of the response or use your own implemenation in your `Paging` subclass by overriding the `parse(fromResponse:)` method.
 
-##Authorization
+## Authorization
 This library has a built-in authorization support. For now the only implementation of the `Authorizable` protocol is the `GrantTypePasswordAuthorization` class with implementation of OAuth 2.0 Grant Type Password type of authorization that holds your access token in the device secure Keychain.
 
 The implementation is calling a given API for a new Access Token if the token has expired during the request, suspending any other requests made on that Connector instance. When the new Access Token is obtained
