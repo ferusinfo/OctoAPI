@@ -18,6 +18,22 @@ If you configure all the necessary classes, the basic usage is as follows:
 - You call the `run` method of your Connector class with the request as a parameter
 - You parse the response data with `DataParser` of your choice
 
+```swift
+var request = OctoRequest(endpoint: "examples")
+
+ExampleConnector.sharedInstance.run(request: request) { (error, data, paging) in
+    if error == nil {
+        if let examples = GlossDataParser.parse(collection: data, withType: ExampleModel.self), let example = examples.first {
+            //Do anything with the parsed model here
+        }
+    }
+}
+```
+
+## Example  
+An example for GetResponse Blog API can be found in the Example directory of the project.  
+It uses no Authorization, making it perfect for testing public APIs.
+
 ## Installation  
 1. Add `pod 'OctoAPI'` to your Podfile
 2. Run `pod install`
@@ -30,22 +46,6 @@ For each of your APIs used in your project, you need to define a set of classes:
 - `Adapter` protocol class passed to the `Callable` class with all the necessary configuration of your API
 - `Authorization` class if your API requires authorization (Optional) 
 - `Paging` class if you want to use paging features in your API (Optional) 
-
-## Example  
-An example for GetResponse Blog API can be found in the Example directory of the project.  
-It uses no Authorization, making it perfect for testing public APIs.
-
-```swift
-var request = OctoRequest(endpoint: "examples")
-
-ExampleConnector.sharedInstance.run(request: request) { (error, data, paging) in
-    if error == nil {
-        if let examples = GlossDataParser.parse(collection: data, withType: ExampleModel.self), let example = examples.first {
-            //Do anything with the parsed model here
-        }
-    }
-}
-```
 
 ##Adapter
 Adapter protocol class is holding the configuration for your API that is used in your project. Example:
