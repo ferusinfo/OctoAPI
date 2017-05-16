@@ -4,19 +4,24 @@
 Octo is a JSON API abstraction layer built on top of Alamofire for your iOS projects written in Swift 3.  
 It removes the usual and boring setup of API connectors with easy to use set of `Adapter`, `Connector`, `DataParser` and `Paging` classes.
 
-## Todo  
-1. Add custom logging
-2. Implement error mapping to JSON on call failure
-3. Unit Tests
+## Features
+- Easy interaction with any REST API based on OAuth 2.0 `grant-type=password` authorization
+- Changing between production and sandbox environment with flip of a switch
+- Easy to use paging
+- Custom logger to quickly determine any problems
+- Allows customization to support other authorization protocols (just create your custom class!)
+
+## Basic Usage
+If you configure all the necessary classes, the basic usage is as follows:
+
+- You prepare your request using the `OctoRequest` class, by providing the endpoint, method, etc.
+- You call the `run` method of your Connector class with the request as a parameter
+- You parse the response data with `DataParser` of your choice
 
 ## Installation  
 1. Add `pod 'OctoAPI'` to your Podfile
 2. Run `pod install`
 3. Add `import OctoAPI` wherever you want to use the library
-
-## Example  
-An example for GetResponse Blog API can be found in the Example directory of the project.  
-It uses no Authorization, making it perfect for testing public APIs.
 
 ## Setup  
 For each of your APIs used in your project, you need to define a set of classes:
@@ -26,12 +31,9 @@ For each of your APIs used in your project, you need to define a set of classes:
 - `Authorization` class if your API requires authorization (Optional) 
 - `Paging` class if you want to use paging features in your API (Optional) 
 
-## Basic Usage
-If you configure all the necessary classes, the basic usage is as follows:
-
-- You prepare your class using the `OctoRequest` class
-- You call the `run` method of your Connector class with the request as a parameter
-- You parse the response data with `DataParser` of your choice
+## Example  
+An example for GetResponse Blog API can be found in the Example directory of the project.  
+It uses no Authorization, making it perfect for testing public APIs.
 
 ```swift
 var request = OctoRequest(endpoint: "examples")
@@ -138,6 +140,10 @@ if let authorizer = ExampleAPIConnector.sharedInstance.adapter.authorizer {
 	})
 }
 ```
+
+## Todo  
+1. Implement error mapping to JSON on call failure
+2. Unit Tests
 
 ## Contributing
 
