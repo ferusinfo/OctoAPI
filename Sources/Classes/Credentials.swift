@@ -37,8 +37,12 @@ open class Credentials {
         }
     }
     
-    required public init(keychainService: String) {
-        self.keychain = Keychain(service: keychainService)
+    required public init(keychainService: String, accessGroup: String? = nil) {
+        if let accessGroup = accessGroup {
+            self.keychain = Keychain(service: keychainService, accessGroup: accessGroup)
+        } else {
+            self.keychain = Keychain(service: keychainService)
+        }
         self.keychainCredentialsKey = keychainService + ".credentials"
     }
     
