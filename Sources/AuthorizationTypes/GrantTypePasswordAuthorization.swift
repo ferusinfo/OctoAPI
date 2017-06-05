@@ -155,4 +155,10 @@ open class GrantTypePasswordAuthorization : Authorizable {
         return token != nil
     }
     
+    open var credentials : Credentials {
+        get {
+            return Credentials(keychainService: configParams.serviceName)
+        }
+    }
+    
 }

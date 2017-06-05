@@ -99,12 +99,6 @@ extension Authorizable {
         return nil
     }
     
-    public var credentials : Credentials {
-        get {
-            return Credentials(keychainService: configParams.serviceName)
-        }
-    }
-    
     public func performAuthorization(login: String, password: String, completion: @escaping (Error?) -> Void) {
         performOperationOnAuthorization(mode: .authorization, parameters: authorizationParameters(login: login, password: password), completion: completion)
     }
