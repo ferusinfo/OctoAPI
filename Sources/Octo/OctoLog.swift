@@ -9,11 +9,16 @@
 import Foundation
 import Alamofire
 
-public class OctoLog : CustomStringConvertible {
+open class OctoLog : CustomStringConvertible {
+    public var dataProvider = "OctoAPI"
     public var date : Date
     public var logString : String
+    public var additionalUserInfo : Any?
+    public var httpStatusCode : Int?
+    
     public var response : DataResponse<Any>?
     public var error : Error?
+    public var data : Any?
     
     private let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -22,44 +27,59 @@ public class OctoLog : CustomStringConvertible {
     }()
     
     public var description : String {
-        return String(format: "[OctoAPI][%@] %@", self.formatter.string(from: Date()), logString)
+        return String(format: "[%@][%@] %@", self.dataProvider, self.formatter.string(from: self.date), self.fullLogDescription)
     }
     
-    init(logString: String, date: Date = Date()) {
+    public var fullLogDescription : String {
+        var fullLogString = ""
+        fullLogString += "===================\n"
+        fullLogString += "Logged at \(self.formatter.string(from: self.date))\n"
+        fullLogString += "\nLog Body: \n"
+        fullLogString += "\(self.logString)\n\n"
+        if let err = self.error {
+            fullLogString += "Error: \n"
+            fullLogString += "\(err.localizedDescription)\n"
+        }
+        
+        if let additionalData = self.additionalUserInfo {
+            fullLogString += "Additional User Info: \n"
+            fullLogString += "\(additionalData) \n"
+        }
+        
+        fullLogString += "===================\n"
+        return fullLogString
+    }
+    
+    public init(logString: String, date: Date = Date()) {
         self.date = date
         self.logString = logString
     }
     
-    convenience init(error: Error, date: Date = Date()) {
+    public convenience init(error: Error, date: Date = Date()) {
         self.init(logString: error.localizedDescription, date: date)
         self.error = error
     }
     
-    convenience init(string: String, error: Error, response: DataResponse<Any>, date: Date = Date()) {
+    public convenience init(string: String, error: Error, response: DataResponse<Any>, date: Date = Date()) {
         self.init(logString: string, date: date)
         self.error = error
         self.response = response
+        self.processResponse()
     }
     
-    convenience init(response: DataResponse<Any>, date: Date = Date()) {
-        var logString = "--"
-        if let prettyResp = OctoLog.pretty(response: response) {
-            logString = prettyResp
-        }
-        
-        self.init(logString: logString, date: date)
+    public convenience init(response: DataResponse<Any>, date: Date = Date()) {
+        self.init(logString: "", date: date)
         self.response = response
+        self.processResponse()
     }
     
-    convenience init(data: Any, response: DataResponse<Any>, date: Date = Date()) {
-        
-        var logString = "--"
-        if let resp = response.response {
-            logString = "\nHeaders:\n\(OctoLog.printHeaders(resp.allHeaderFields))\nResponse data:\n\(data)"
-        }
-        
-        self.init(logString: logString, date: date)
+    public convenience init(data: Any, response: DataResponse<Any>, date: Date = Date()) {
+        self.init(logString: "", date: date)
         self.response = response
+        self.data = data
+        
+        self.processResponse()
+        self.processData()
     }
     
     static func pretty(response: DataResponse<Any>) -> String? {
@@ -75,5 +95,31 @@ public class OctoLog : CustomStringConvertible {
             headersString += "[\(key)]=\(value); "
         }
         return headersString
+    }
+    
+    func processResponse() {
+        var responseLogString = "\nData Response: \n"
+        if let resp = self.response {
+            
+            if let data = resp.data, let stringFromData = String(data: data, encoding: .utf8), self.data == nil {
+                self.data = stringFromData
+            }
+            
+            if let prettyResp = OctoLog.pretty(response: resp) {
+                responseLogString += "\(prettyResp)\n"
+            }
+            
+            if let headersResponse = resp.response {
+                self.httpStatusCode = headersResponse.statusCode
+                responseLogString += "Headers:\n[\(OctoLog.printHeaders(headersResponse.allHeaderFields))]\n"
+            }
+            self.logString += responseLogString
+        }
+    }
+    
+    func processData() {
+        if let data = self.data {
+            self.logString += "\nRaw Data:\n{\(data)}\n"
+        }
     }
 }
