@@ -4,7 +4,7 @@ use_frameworks!
 target 'OctoAPI' do
   pod 'Alamofire', '~> 4.0'
   pod 'Gloss', '~> 1.1'
-  pod 'Alamofire-Gloss', '~> 2.0'
+  pod 'Alamofire-Gloss', '~> 2.1'
   pod 'HTMLString', '~> 1.0.2'
   pod 'KeychainAccess'
   pod 'AlamofireNetworkActivityLogger', '~> 2.0'

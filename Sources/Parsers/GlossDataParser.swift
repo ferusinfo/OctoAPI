@@ -25,15 +25,14 @@
 import Gloss
 
 public class GlossDataParser : DataParser {
-    
-    public static func parse<T : Decodable>(object: Any?, withType type: T.Type) -> T? {
+    public static func parse<T : Gloss.Decodable>(object: Any?, withType type: T.Type) -> T? {
         if let data = object as? Gloss.JSON, let object = T(json: data) {
             return object
         }
         return nil
     }
     
-    public static func parse<T : Decodable>(collection: Any?, withType: T.Type) -> [T]? {
+    public static func parse<T : Gloss.Decodable>(collection: Any?, withType: T.Type) -> [T]? {
         if let data = collection as? Array<Gloss.JSON>, let collection = [T].from(jsonArray: data) {
             return collection
         }

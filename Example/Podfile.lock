@@ -1,32 +1,32 @@
 PODS:
-  - Alamofire (4.0.1)
-  - Alamofire-Gloss (2.0.0):
-    - Alamofire-Gloss/Core (= 2.0.0)
-  - Alamofire-Gloss/Core (2.0.0):
+  - Alamofire (4.5.1)
+  - Alamofire-Gloss (2.1.0):
+    - Alamofire-Gloss/Core (= 2.1.0)
+  - Alamofire-Gloss/Core (2.1.0):
     - Alamofire (~> 4.0)
     - Gloss (~> 1.0)
-  - AlamofireNetworkActivityLogger (2.0.0):
+  - AlamofireNetworkActivityLogger (2.2.0):
     - Alamofire (~> 4.0)
-  - Gloss (1.1.0)
+  - Gloss (1.2.4)
   - HTMLString (1.0.2)
-  - KeychainAccess (3.0.1)
+  - KeychainAccess (3.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - Alamofire-Gloss (~> 2.0)
+  - Alamofire-Gloss (~> 2.1)
   - AlamofireNetworkActivityLogger (~> 2.0)
   - Gloss (~> 1.1)
   - HTMLString (~> 1.0.2)
   - KeychainAccess
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  Alamofire-Gloss: dea192a13e23d323415e80e9b18d53915fd484bf
-  AlamofireNetworkActivityLogger: 4639c88813101ee2be40f9a03b427e50296bb738
-  Gloss: a8340c124ff69c5d1c12e06c252373f4a16d2958
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire-Gloss: e6c298c45587782dd28febd4284c9bf4b5d508b7
+  AlamofireNetworkActivityLogger: a7ae1842988b3f6248a49213268375bd27b515f0
+  Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
   HTMLString: dffe085e416bd16a734c4eeee79953daa15fb560
-  KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
 
-PODFILE CHECKSUM: eca664dc8a176e116d5a079c7800b902c99ddde3
+PODFILE CHECKSUM: fe2592d301a54806d7286bed0391ad8066eb5ef3
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1
