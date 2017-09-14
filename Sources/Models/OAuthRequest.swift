@@ -25,7 +25,7 @@
 
 import Gloss
 
-public class OAuthRequest : Encodable {
+public class OAuthRequest : Gloss.Encodable {
     
     //MARK: - Keys
     private let GrantTypeKey = "grant_type"

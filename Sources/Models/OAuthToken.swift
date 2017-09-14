@@ -25,7 +25,7 @@
 
 import Gloss
 
-public class OAuthToken : NSObject, Decodable, Encodable {
+public class OAuthToken : NSObject, Gloss.Decodable, Gloss.Encodable {
     
     // MARK: - Keys
     private let AccessTokenKey = "access_token"

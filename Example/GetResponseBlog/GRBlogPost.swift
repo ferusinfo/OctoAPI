@@ -24,7 +24,7 @@
 //
 import Gloss
 
-class GRBlogPost : NSObject, Decodable {
+class GRBlogPost : NSObject, Gloss.Decodable {
     //MARK: - Properties
     let identifier : Int
     let link : String

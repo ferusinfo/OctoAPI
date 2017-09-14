@@ -25,7 +25,7 @@
 
 class GetResponseBlogExample : BaseExample {
     override func run() {
-        var request = OctoRequest(endpoint: "posts")
+        let request = OctoRequest(endpoint: "posts")
         request.paging = GetResponseBlogPaging(offset: 1, limit: 10)
         
         GetResponseBlogConnector.sharedInstance.run(request: request) { (error, data, paging) in

@@ -26,6 +26,6 @@
 import Gloss
 
 public protocol DataParser {
-    static func parse<T: Decodable>(object: Any?, withType type: T.Type) -> T?
-    static func parse<T: Decodable>(collection: Any?, withType type: T.Type) -> [T]?
+    static func parse<T: Gloss.Decodable>(object: Any?, withType type: T.Type) -> T?
+    static func parse<T: Gloss.Decodable>(collection: Any?, withType type: T.Type) -> [T]?
 }
