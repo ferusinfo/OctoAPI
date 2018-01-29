@@ -4,7 +4,7 @@
 Octo is a JSON API abstraction layer built on top of Alamofire for your iOS projects written in Swift 3.  
 It removes the usual and boring setup of API connectors with easy to use set of `Adapter`, `Connector`, `DataParser` and `Paging` classes.
 
-##Important information for version `>= 0.3.0`
+## Important information for version `>= 0.3.0`
 As of version `0.3.0`, you should consider using the method `run(octoRequest: completion:)` instead of `run(request: completion:)` to run your requests - the new method is prepared to capture HTTP error code from the response. The 0.5.0 release will remove the old method.
 
 ## Features :sparkles:
