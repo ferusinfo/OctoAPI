@@ -26,10 +26,10 @@
 import Foundation
 
 open class OctoError {
-    var error : Error
-    var errorDescription : String?
-    var errorCode : Int
-    var errorDomain : String?
+    public var error : Error
+    public var errorDescription : String?
+    public var errorCode : Int
+    public var errorDomain : String?
     
     init(error: Error, errorCode: Int, errorDomain: String? = nil, errorDescription: String? = nil) {
         self.error = error
