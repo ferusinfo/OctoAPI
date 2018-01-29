@@ -35,6 +35,7 @@
 		A49E95681DE4504100FD99D4 /* GetResponseBlogExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95621DE4504100FD99D4 /* GetResponseBlogExample.swift */; };
 		A49E956A1DE4504100FD99D4 /* GRBlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95641DE4504100FD99D4 /* GRBlogPost.swift */; };
 		A4CD44BB1E5B15B300A01240 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD44BA1E5B15B300A01240 /* DictionaryExtension.swift */; };
+		A4CD8FA4201F293D001C607C /* OctoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD8FA3201F293D001C607C /* OctoError.swift */; };
 		A4E7FBBF1DE44E2700E14AEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */; };
 		A4E7FBC41DE44E2700E14AEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC21DE44E2700E14AEE /* Main.storyboard */; };
 		A4E7FBC61DE44E2700E14AEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC51DE44E2700E14AEE /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		A49E95621DE4504100FD99D4 /* GetResponseBlogExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogExample.swift; sourceTree = "<group>"; };
 		A49E95641DE4504100FD99D4 /* GRBlogPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRBlogPost.swift; sourceTree = "<group>"; };
 		A4CD44BA1E5B15B300A01240 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		A4CD8FA3201F293D001C607C /* OctoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoError.swift; sourceTree = "<group>"; };
 		A4E7FBBB1DE44E2700E14AEE /* OctoAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4E7FBC31DE44E2700E14AEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				A49E95441DE44E6500FD99D4 /* OctoConnector.swift */,
 				A465862D1E4C737D00FC1EA8 /* OctoLogger.swift */,
 				A465862E1E4C737D00FC1EA8 /* OctoLog.swift */,
+				A4CD8FA3201F293D001C607C /* OctoError.swift */,
 			);
 			path = Octo;
 			sourceTree = "<group>";
@@ -370,7 +373,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -389,6 +392,7 @@
 				A49E95531DE44E6500FD99D4 /* OAuthRequest.swift in Sources */,
 				A49E956A1DE4504100FD99D4 /* GRBlogPost.swift in Sources */,
 				A49E954E1DE44E6500FD99D4 /* Credentials.swift in Sources */,
+				A4CD8FA4201F293D001C607C /* OctoError.swift in Sources */,
 				A49E955C1DE44E6500FD99D4 /* DataParser.swift in Sources */,
 				A4F57FD41DE851E700545F34 /* GetResponseBlogPaging.swift in Sources */,
 				A49E955D1DE44E6500FD99D4 /* PagingParameters.swift in Sources */,

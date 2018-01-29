@@ -78,11 +78,18 @@ extension Callable {
     
     @discardableResult
     public func run(request: OctoRequest, completion: @escaping (_ error: Error?, _ data: Any?, _ paging: Paging?) -> Void) -> Request? {
+        return self.run(octoRequest: request) { (octoError, data, paging) in
+            completion(octoError?.error, data, paging)
+        }
+    }
+    
+    @discardableResult
+    public func run(octoRequest request: OctoRequest, completion: @escaping (_ error: OctoError?, _ data: Any?, _ paging: Paging?) -> Void) -> Request? {
         
         let endpoint = adapter.versionedURL.appending(request.endpoint)
         
         guard let url = URL(string: endpoint), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-            else { completion(self.errorOccured(code: 500, localizedDescription: "Could not parse the endpoint URL"), nil, nil); return nil}
+            else { completion(OctoError(errorCode: 500, errorDomain: adapter.errorDomain, errorDescription: "Could not parse the endpoint URL"), nil, nil); return nil}
 
         if let paging = request.paging, let params = paging.queryParameters() {
             if let queryItems = urlComponents.queryItems {
@@ -153,7 +160,7 @@ extension Callable {
                                 if error == nil {
                                     self.logger?.log(string: "Token reauthorization successful")
                                     authorizer.isReauthorizing = false
-                                    self.run(request: request, completion: completion)
+                                    self.run(octoRequest: request, completion: completion)
                                     self.performOnQueue(action: .resume)
                                     
                                 } else {
@@ -162,16 +169,17 @@ extension Callable {
                                     self.performOnQueue(action: .cancel)
                                     self.logger?.log(error: error!)
                                     authorizer.isReauthorizing = false
-                                    completion(error, nil, nil)
-                                    
+                                    let octoError = OctoError(error: error!, errorCode: response.statusCode, errorDomain: self.adapter.errorDomain, errorDescription: "Token reauthorization failed")
+                                    completion(octoError, nil, nil)
                                 }
                             })
                         } else {
-                            self.run(request: request, completion: completion)
+                            self.run(octoRequest: request, completion: completion)
                         }
                     }
                 } else {
-                    completion(error, nil, nil)
+                    let octoError = OctoError(error: error, errorCode: response.response!.statusCode)
+                    completion(octoError, nil, nil)
                 }
 
             }

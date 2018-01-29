@@ -1,8 +1,8 @@
 //
-//  GetResponseBlogExample.swift
+//  OctoError.swift
 //  OctoAPI
 //
-//  Copyright (c) 2016 Maciej Kołek
+//  Copyright (c) 2018 Maciej Kołek
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,23 +23,30 @@
 //  THE SOFTWARE.
 //
 
-class GetResponseBlogExample : BaseExample {
-    override func run() {
-        let request = OctoRequest(endpoint: "postsa")
-        request.paging = GetResponseBlogPaging(offset: 1, limit: 10)
-        
-        GetResponseBlogConnector.sharedInstance.run(octoRequest: request) { (error, data, paging) in
-            if error == nil {
-                if let blogPosts = GlossDataParser.parse(collection: data, withType: GRBlogPost.self), let post = blogPosts.first {
-                    self.delegate?.exampleDidEndRunning(result: post.clearTitle)
-                }
-            } else {
-                if let octoError = error {
-                    print("Error code captured: ", octoError.errorCode)
-                }
-                self.delegate?.exampleDidEndRunning(result: error!.error.localizedDescription)
-            }
-        }
-        
+import Foundation
+
+open class OctoError {
+    var error : Error
+    var errorDescription : String?
+    var errorCode : Int
+    var errorDomain : String?
+    
+    init(error: Error, errorCode: Int, errorDomain: String? = nil, errorDescription: String? = nil) {
+        self.error = error
+        self.errorCode = errorCode
+        self.errorDescription = errorDescription
+        self.errorDomain = errorDomain
+    }
+    
+    convenience init(errorCode: Int, errorDomain: String, errorDescription: String) {
+        let err = OctoError.createError(code: errorCode, domain: errorDomain, description: errorDescription)
+        self.init(error: err, errorCode: errorCode, errorDomain: errorDomain, errorDescription: errorDescription)
+    }
+    
+    static func createError(code: Int, domain: String, description: String) -> Error {
+        let userInfo = [
+            NSLocalizedDescriptionKey :  NSLocalizedString(description, comment: "")
+        ]
+        return NSError(domain: domain, code: code, userInfo: userInfo)
     }
 }

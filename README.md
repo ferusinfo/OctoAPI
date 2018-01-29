@@ -4,8 +4,12 @@
 Octo is a JSON API abstraction layer built on top of Alamofire for your iOS projects written in Swift 3.  
 It removes the usual and boring setup of API connectors with easy to use set of `Adapter`, `Connector`, `DataParser` and `Paging` classes.
 
+##Important information for version `>= 0.3.0`
+As of version `0.3.0`, you should consider using the method `run(octoRequest: completion:)` instead of `run(request: completion:)` to run your requests - the new method is prepared to capture HTTP error code from the response. The 0.5.0 release will remove the old method.
+
 ## Features :sparkles:
-- Easy interaction with any REST API based on OAuth 2.0 `grant-type=password` authorization
+- Easy interaction with any REST API
+- Included authorization class based on OAuth 2.0 `grant-type=password` authorization
 - Changing between production and sandbox environment with flip of a switch
 - Easy to use paging
 - Custom logger to quickly determine any problems
@@ -72,8 +76,8 @@ struct ExampleAPIAdapter : Adapter {
 You can use any object-parsing library of your choice. To use a custom parser in your project, simply implement `DataParser` protocol with two following methods:
 
 ```swift
-static func parse<T: Decodable>(object: Any?, withType type: T.Type) -> T?
-static func parse<T: Decodable>(collection: Any?, withType type: T.Type) -> [T]?
+static func parse<T: Gloss.Decodable>(object: Any?, withType type: T.Type) -> T?
+static func parse<T: Gloss.Decodable>(collection: Any?, withType type: T.Type) -> [T]?
 ```
 
 The library also comes with built-in suppoort for [Gloss](https://github.com/hkellaway/Gloss) - in my opinion best JSON mapping library for Swift - make a use of it with the `GlossDataParser` class as follows:
