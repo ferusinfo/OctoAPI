@@ -178,7 +178,11 @@ extension Callable {
                         }
                     }
                 } else {
-                    let octoError = OctoError(error: error, errorCode: response.response!.statusCode)
+                    var errCode = 999
+                    if let responseCode = response.response?.statusCode {
+                        errCode = responseCode
+                    }
+                    let octoError = OctoError(error: error, errorCode: errCode)
                     completion(octoError, nil, nil)
                 }
 
