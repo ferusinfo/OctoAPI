@@ -161,4 +161,8 @@ open class GrantTypePasswordAuthorization : Authorizable {
         }
     }
     
+    open func deauthorize() {
+        credentials.removeCredentials()
+    }
+    
 }
