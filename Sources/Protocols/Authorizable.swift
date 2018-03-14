@@ -55,7 +55,6 @@ public protocol Authorizable {
     func isAuthorized() -> Bool
     func needsNewCredentials() -> Bool
     func shouldReauthorize() -> Bool
-    func deauthorize()
     
     func logout()
     
