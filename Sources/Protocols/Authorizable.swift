@@ -34,6 +34,7 @@ public enum AuthorizationMode : String {
 public protocol AuthorizableDelegate : class {
     func authorizationDataDidChange()
     func isPerformingReauthorization()
+    func didDeauthorize()
 }
 
 public protocol Authorizable {
@@ -93,6 +94,7 @@ extension Authorizable {
     
     public func logout() {
         credentials.removeCredentials()
+        self.delegate?.didDeauthorize()
     }
     
     public var logger : OctoLogger? {
