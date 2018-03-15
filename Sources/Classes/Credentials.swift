@@ -38,7 +38,7 @@ open class Credentials {
     }
     
     open var hasCredentials: Bool {
-        return self.keychain[keychainCredentialsKey] != nil
+        return self.getCredentials() != nil
     }
     
     required public init(keychainService: String, accessGroup: String? = nil) {
