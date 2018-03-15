@@ -93,8 +93,10 @@ extension Authorizable {
     }
     
     public func logout() {
-        credentials.removeCredentials()
-        self.delegate?.didDeauthorize()
+        if credentials.hasCredentials {
+            credentials.removeCredentials()
+            self.delegate?.didDeauthorize()
+        }
     }
     
     public var logger : OctoLogger? {
