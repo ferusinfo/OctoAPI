@@ -37,6 +37,10 @@ open class Credentials {
         }
     }
     
+    open var hasCredentials: Bool {
+        return self.keychain[keychainCredentialsKey] != nil
+    }
+    
     required public init(keychainService: String, accessGroup: String? = nil) {
         if let accessGroup = accessGroup {
             self.keychain = Keychain(service: keychainService, accessGroup: accessGroup)
