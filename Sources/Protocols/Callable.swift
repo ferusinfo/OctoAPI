@@ -169,6 +169,7 @@ extension Callable {
                                     self.performOnQueue(action: .cancel)
                                     self.logger?.log(error: error!)
                                     authorizer.isReauthorizing = false
+                                    authorizer.logout()
                                     let octoError = OctoError(error: error!, errorCode: response.statusCode, errorDomain: self.adapter.errorDomain, errorDescription: "Token reauthorization failed")
                                     completion(octoError, nil, nil)
                                 }

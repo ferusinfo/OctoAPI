@@ -160,5 +160,4 @@ open class GrantTypePasswordAuthorization : Authorizable {
             return Credentials(keychainService: configParams.serviceName)
         }
     }
-    
 }
