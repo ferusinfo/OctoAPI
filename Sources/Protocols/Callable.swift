@@ -25,7 +25,7 @@
 import Gloss
 import Alamofire
 
-public protocol Callable : class {
+public protocol Callable : class, RequestRetrier {
     var manager : Alamofire.SessionManager { get }
     var logger : OctoLogger? {get}
     var adapter : Adapter { get }
@@ -61,7 +61,12 @@ extension Callable {
     
     public var manager : Alamofire.SessionManager {
         get {
-            return Alamofire.SessionManager.default
+            let manager = Alamofire.SessionManager.default
+            manager.retrier = self
+            if let authorizer = self.authorizer {
+                manager.adapter = authorizer
+            }
+            return manager
         }
     }
     
@@ -109,9 +114,9 @@ extension Callable {
             headers.update(other: perRequestHeaders)
         }
         
-        if let authorizer = adapter.authorizer, authorizer.isAuthorized() {
-            headers.update(other: authorizer.authorizationHeader)
-        }
+//        if let authorizer = adapter.authorizer, authorizer.isAuthorized() {
+//            headers.update(other: authorizer.authorizationHeader)
+//        }
         
         //TODO: Add sorting here
         self.logger?.log(request: request, withEndpoint: urlComponents)
@@ -212,5 +217,15 @@ extension Callable {
             }
         }
         callsQueue = []
+    }
+    
+    // MARK: - Request Retrier
+    
+    public func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
+        if let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 {
+            completion(true, 1.0) // retry after 1 second
+        } else {
+            completion(false, 0.0) // don't retry
+        }
     }
 }

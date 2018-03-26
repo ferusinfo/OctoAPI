@@ -160,4 +160,12 @@ open class GrantTypePasswordAuthorization : Authorizable {
             return Credentials(keychainService: configParams.serviceName)
         }
     }
+    
+    // MARK: - Request Adapter
+    
+    public func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+        var urlRequest = urlRequest
+        urlRequest.allHTTPHeaderFields?.update(other: authorizationHeader)
+        return urlRequest
+    }
 }
