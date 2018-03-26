@@ -113,10 +113,6 @@ extension Callable {
             headers.update(other: perRequestHeaders)
         }
         
-//        if let authorizer = adapter.authorizer, authorizer.isAuthorized() {
-//            headers.update(other: authorizer.authorizationHeader)
-//        }
-        
         //TODO: Add sorting here
         self.logger?.log(request: request, withEndpoint: urlComponents)
         
