@@ -25,7 +25,7 @@
 import Gloss
 import Alamofire
 
-public protocol Callable : class, RequestRetrier {
+public protocol Callable : class {
     var manager : Alamofire.SessionManager { get }
     var logger : OctoLogger? {get}
     var adapter : Adapter { get }
@@ -62,7 +62,6 @@ extension Callable {
     public var manager : Alamofire.SessionManager {
         get {
             let manager = Alamofire.SessionManager.default
-            manager.retrier = self
             if let authorizer = self.authorizer {
                 manager.adapter = authorizer
             }
@@ -217,15 +216,5 @@ extension Callable {
             }
         }
         callsQueue = []
-    }
-    
-    // MARK: - Request Retrier
-    
-    public func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
-        if let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 {
-            completion(true, 1.0) // retry after 1 second
-        } else {
-            completion(false, 0.0) // don't retry
-        }
     }
 }
