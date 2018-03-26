@@ -26,6 +26,17 @@ import Alamofire
 import KeychainAccess
 import Gloss
 
+public enum AuthorizationError: Error, LocalizedError {
+    case parsingError
+    
+    var localizedDescription: String {
+        switch self {
+        case .parsingError:
+            return "Oauth token parsing error!"
+        }
+    }
+}
+
 public enum AuthorizationMode : String {
     case authorization = "auth"
     case reauthorization = "re_auth"
@@ -137,7 +148,7 @@ extension Authorizable {
                         self.delegate?.authorizationDataDidChange()
                         completion(nil)
                     } else {
-                        completion(nil)
+                        completion(AuthorizationError.parsingError)
                     }
                 case .failure(let error):
                     self.logger?.log(error: error, withResponse: response)
@@ -152,6 +163,7 @@ extension Authorizable {
     // MARK: - Request Adapter
     
     public func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+        guard !self.isReauthorizing else { return urlRequest }
         var urlRequest = urlRequest
         urlRequest.allHTTPHeaderFields?.update(other: authorizationHeader)
         return urlRequest
