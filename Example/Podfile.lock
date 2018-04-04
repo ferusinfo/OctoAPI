@@ -3,23 +3,23 @@ PODS:
   - AlamofireNetworkActivityLogger (2.2.0):
     - Alamofire (~> 4.0)
   - Gloss (1.2.4)
-  - HTMLString (1.0.2)
+  - HTMLString (3.0.0)
   - KeychainAccess (3.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - AlamofireNetworkActivityLogger (~> 2.0)
   - Gloss (~> 1.1)
-  - HTMLString (~> 1.0.2)
+  - HTMLString (= 3.0.0)
   - KeychainAccess
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireNetworkActivityLogger: a7ae1842988b3f6248a49213268375bd27b515f0
   Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
-  HTMLString: dffe085e416bd16a734c4eeee79953daa15fb560
+  HTMLString: 57f421a65b10c4eba75a16c329d1cc82a2167ab3
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
 
-PODFILE CHECKSUM: 5633b1e8f3bdd8e5bb83beab06a4e78cc2aa4c59
+PODFILE CHECKSUM: ec951011932cc0c9b7c31f803c402699326bf4cd
 
 COCOAPODS: 1.4.0
