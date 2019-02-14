@@ -184,7 +184,7 @@ extension Callable {
                         errCode = responseCode
                     }
                     let octoError = OctoError(error: error, errorCode: errCode)
-                    completion(octoError, nil, nil)
+                    completion(octoError, response.data, nil)
                 }
 
             }
