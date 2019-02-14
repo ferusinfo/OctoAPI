@@ -257,7 +257,6 @@
 				A4E7FBB81DE44E2700E14AEE /* Frameworks */,
 				A4E7FBB91DE44E2700E14AEE /* Resources */,
 				7CCC51E5284AEA9D002E8975 /* [CP] Embed Pods Frameworks */,
-				9590BBD901BFF11612C3A6E1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -321,7 +320,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-OctoAPI/Pods-OctoAPI-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-OctoAPI/Pods-OctoAPI-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -338,22 +337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OctoAPI/Pods-OctoAPI-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9590BBD901BFF11612C3A6E1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OctoAPI/Pods-OctoAPI-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OctoAPI/Pods-OctoAPI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F8E74CCB20203F80C157FBA9 /* [CP] Check Pods Manifest.lock */ = {

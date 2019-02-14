@@ -13,6 +13,14 @@ DEPENDENCIES:
   - HTMLString (= 3.0.0)
   - KeychainAccess
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireNetworkActivityLogger
+    - Gloss
+    - HTMLString
+    - KeychainAccess
+
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireNetworkActivityLogger: a7ae1842988b3f6248a49213268375bd27b515f0
@@ -22,4 +30,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ec951011932cc0c9b7c31f803c402699326bf4cd
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.0
