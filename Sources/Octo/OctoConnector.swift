@@ -26,6 +26,7 @@
 import Alamofire
 
 open class OctoConnector : NSObject, Callable {
+    
     open var adapter: Adapter {
         get {
             return OctoAdapter()

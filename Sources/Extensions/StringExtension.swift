@@ -27,7 +27,7 @@ import HTMLString
 
 extension String {
     public func stripHTML() -> String {
-        return self.replacingOccurrences(of: "<[^>]+>", with: "", options: CompareOptions.regularExpression, range: nil).unescapingFromHTML
+        return self.replacingOccurrences(of: "<[^>]+>", with: "", options: CompareOptions.regularExpression, range: nil).removingHTMLEntities
     }
 }
 

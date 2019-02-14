@@ -61,7 +61,11 @@ extension Callable {
     
     public var manager : Alamofire.SessionManager {
         get {
-            return Alamofire.SessionManager.default
+            let manager = Alamofire.SessionManager.default
+            if let authorizer = self.authorizer {
+                manager.adapter = authorizer
+            }
+            return manager
         }
     }
     
@@ -107,10 +111,6 @@ extension Callable {
         
         if let perRequestHeaders = adapter.perRequestHeaders {
             headers.update(other: perRequestHeaders)
-        }
-        
-        if let authorizer = adapter.authorizer, authorizer.isAuthorized() {
-            headers.update(other: authorizer.authorizationHeader)
         }
         
         //TODO: Add sorting here
