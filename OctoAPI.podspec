@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   s.author             = { "Maciej Kołek" => "hello@ferus.info" }
   s.social_media_url   = "http://twitter.com/ferusinfo"
   s.platform     = :ios, "10.0"
+  s.swift_version = "4.2"
   s.source       = { :git => "https://github.com/ferusinfo/OctoAPI.git", :tag => "#{s.version}" }
 
   s.source_files  = "Sources/*/*"
