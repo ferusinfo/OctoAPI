@@ -8,7 +8,7 @@
 import Foundation
 
 extension Encodable {
-    func toDictionary() -> [String: Any] {
+    public func toDictionary() -> [String: Any] {
         return try! JSONSerialization.jsonObject(with: JSONEncoder().encode(self), options: []) as! [String: Any]
     }
 }
