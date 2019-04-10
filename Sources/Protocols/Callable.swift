@@ -148,7 +148,7 @@ extension Callable {
                 
                 self.logger?.log(error: error, withResponse: response)
                 self.authorizer?.logFailure()
-                if let response = response.response, response.statusCode == 401, var authorizer = self.adapter.authorizer, authorizer.isReauthorizable {
+                if let response = response.response, response.statusCode == 401, let authorizer = self.adapter.authorizer, authorizer.isReauthorizable {
                     self.logger?.log(string: "Performing token reauthorization")
                     
                     DispatchQueue(label: "octo.reauth.lock").sync {
