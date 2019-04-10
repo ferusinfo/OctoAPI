@@ -27,7 +27,7 @@ import Alamofire
 import Gloss
 
 open class GrantTypePasswordAuthorization : Authorizable {
-    public var delegate: AuthorizableDelegate?
+    public weak var delegate: AuthorizableDelegate?
     
     public var isReauthorizingToken : Bool = false
     var reauthorizingLimit : Int = 20
@@ -78,28 +78,27 @@ open class GrantTypePasswordAuthorization : Authorizable {
     
     public var token : OAuthToken? {
         get {
-            if let creds = credentials.getCredentials(), let tok = OAuthToken(json: creds) {
-                return tok
+            if let creds = credentials.getCredentials()  {
+                return try? DecodableParser.decode(data: creds, type: OAuthToken.self)
             }
             return nil
         }
     }
     
     public func save(token: OAuthToken) {
-        credentials.save(credentials: token.toJSON()!)
+        credentials.save(credentials: token.toDictionary())
     }
     
     public func parse(credentials: Any) -> Parameters? {
         
-        if let json = credentials as? JSON, let token = OAuthToken(json: json) {
-            
-            return token.toJSON()
+        if let json = credentials as? JSON, let token = try? DecodableParser.decode(data: json, type: OAuthToken.self) {
+            return token.toDictionary()
         }
         return nil
     }
     
     public func authorizationParameters(login: String, password: String) -> Parameters? {
-        return OAuthRequest(username: login, password: password, clientID: configParams.clientID).toJSON()
+        return OAuthRequest(username: login, password: password, clientID: configParams.clientID).toDictionary()
     }
     
     open var reauthorizationModel : OAuthRequest? {
@@ -118,7 +117,7 @@ open class GrantTypePasswordAuthorization : Authorizable {
     public var reauthorizationParameters: Parameters? {
         get {
             if let refresh = reauthorizationModel {
-                return refresh.toJSON()
+                return refresh.toDictionary()
             }
             return nil
         }

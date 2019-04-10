@@ -25,12 +25,12 @@
 
 class GetResponseBlogExample : BaseExample {
     override func run() {
-        let request = OctoRequest(endpoint: "postsa")
+        let request = OctoRequest(endpoint: "posts")
         request.paging = GetResponseBlogPaging(offset: 1, limit: 10)
         
         GetResponseBlogConnector.sharedInstance.run(octoRequest: request) { (error, data, paging) in
             if error == nil {
-                if let blogPosts = GlossDataParser.parse(collection: data, withType: GRBlogPost.self), let post = blogPosts.first {
+                if let jsonData = data, let blogPosts = try? DecodableParser.decode(data: jsonData, type: [GRBlogPost].self), let post = blogPosts.first {
                     self.delegate?.exampleDidEndRunning(result: post.clearTitle)
                 }
             } else {

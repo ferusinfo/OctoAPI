@@ -23,15 +23,16 @@
 //  THE SOFTWARE.
 //
 
-import Gloss
+import Foundation
 
-public class OAuthToken : NSObject, Gloss.Decodable, Gloss.Encodable {
+public class OAuthToken : NSObject, Codable {
     
-    // MARK: - Keys
-    private let AccessTokenKey = "access_token"
-    private let RefreshTokenKey = "refresh_token"
-    private let TokenTypeKey = "token_type"
-    private let ExpiresInKey = "expires_in"
+    enum CodingKeys: String, CodingKey {
+        case accessToken = "access_token"
+        case expiresIn = "expires_in"
+        case refreshToken = "refresh_token"
+        case tokenType = "token_type"
+    }
     
     // MARK: - Properties
     public var accessToken : String
@@ -40,31 +41,12 @@ public class OAuthToken : NSObject, Gloss.Decodable, Gloss.Encodable {
     public let tokenType : String
     
     // MARK: - Deserialization
-    required public init?(json: JSON) {
-        
-        guard let accessToken: String = AccessTokenKey <~~ json
-            else { return nil }
-        
-        guard let refreshToken: String = RefreshTokenKey <~~ json
-            else { return nil }
-        
-        guard let tokenType: String = TokenTypeKey <~~ json
-            else { return nil }
-        
-        self.accessToken = accessToken
-        self.refreshToken = refreshToken
-        self.tokenType = tokenType
-        self.expiresIn = ExpiresInKey <~~ json
-    }
-    
-    // MARK: - Serialization
-    @objc public func toJSON() -> JSON? {
-        return jsonify([
-            AccessTokenKey ~~> self.accessToken,
-            ExpiresInKey ~~> self.expiresIn,
-            RefreshTokenKey ~~> self.refreshToken,
-            TokenTypeKey ~~> self.tokenType
-            ])
+    public required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        accessToken = try values.decode(String.self, forKey: .accessToken)
+        refreshToken = try values.decode(String.self, forKey: .refreshToken)
+        tokenType = try values.decode(String.self, forKey: .tokenType)
+        expiresIn = try values.decodeIfPresent(Int.self, forKey: .expiresIn)
     }
     
     // MARK: - Header

@@ -48,8 +48,8 @@ public protocol AuthorizableDelegate : class {
     func didDeauthorize()
 }
 
-public protocol Authorizable: RequestAdapter {
-    weak var delegate : AuthorizableDelegate? {get set}
+public protocol Authorizable: class, RequestAdapter  {
+    var delegate : AuthorizableDelegate? { get set }
     var configParams : AuthorizationParameters { get }
     var credentials : Credentials { get }
     var authorizationHeader : HTTPHeaders { get }
