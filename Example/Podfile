@@ -1,10 +1,11 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
+inhibit_all_warnings!
 
 target 'OctoAPI' do
-  pod 'Alamofire', '~> 4.0'
-  pod 'Gloss', '~> 1.1'
-  pod 'HTMLString', '3.0.0'
-  pod 'KeychainAccess'
+  pod 'Alamofire', '4.7.3'
+  pod 'Gloss', '2.1.1'
+  pod 'HTMLString', '~> 4.0'
+  pod 'KeychainAccess', '~> 3.2'
   pod 'AlamofireNetworkActivityLogger', '~> 2.0'
 end

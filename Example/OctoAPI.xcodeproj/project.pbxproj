@@ -28,7 +28,6 @@
 		A49E95591DE44E6500FD99D4 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95481DE44E6500FD99D4 /* Adapter.swift */; };
 		A49E955A1DE44E6500FD99D4 /* Authorizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95491DE44E6500FD99D4 /* Authorizable.swift */; };
 		A49E955B1DE44E6500FD99D4 /* Callable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E954A1DE44E6500FD99D4 /* Callable.swift */; };
-		A49E955C1DE44E6500FD99D4 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E954B1DE44E6500FD99D4 /* DataParser.swift */; };
 		A49E955D1DE44E6500FD99D4 /* PagingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E954C1DE44E6500FD99D4 /* PagingParameters.swift */; };
 		A49E95651DE4504100FD99D4 /* GetResponseBlogAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E955F1DE4504100FD99D4 /* GetResponseBlogAdapter.swift */; };
 		A49E95671DE4504100FD99D4 /* GetResponseBlogConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95611DE4504100FD99D4 /* GetResponseBlogConnector.swift */; };
@@ -36,6 +35,8 @@
 		A49E956A1DE4504100FD99D4 /* GRBlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E95641DE4504100FD99D4 /* GRBlogPost.swift */; };
 		A4CD44BB1E5B15B300A01240 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD44BA1E5B15B300A01240 /* DictionaryExtension.swift */; };
 		A4CD8FA4201F293D001C607C /* OctoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD8FA3201F293D001C607C /* OctoError.swift */; };
+		A4D3341E225DF02A0002ACCA /* Encodable+ToDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D3341D225DF02A0002ACCA /* Encodable+ToDictionary.swift */; };
+		A4D33420225DF13C0002ACCA /* DecodableDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D3341F225DF13C0002ACCA /* DecodableDataParser.swift */; };
 		A4E7FBBF1DE44E2700E14AEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */; };
 		A4E7FBC41DE44E2700E14AEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC21DE44E2700E14AEE /* Main.storyboard */; };
 		A4E7FBC61DE44E2700E14AEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E7FBC51DE44E2700E14AEE /* Assets.xcassets */; };
@@ -66,7 +67,6 @@
 		A49E95481DE44E6500FD99D4 /* Adapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		A49E95491DE44E6500FD99D4 /* Authorizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorizable.swift; sourceTree = "<group>"; };
 		A49E954A1DE44E6500FD99D4 /* Callable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Callable.swift; sourceTree = "<group>"; };
-		A49E954B1DE44E6500FD99D4 /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		A49E954C1DE44E6500FD99D4 /* PagingParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingParameters.swift; sourceTree = "<group>"; };
 		A49E955F1DE4504100FD99D4 /* GetResponseBlogAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogAdapter.swift; sourceTree = "<group>"; };
 		A49E95611DE4504100FD99D4 /* GetResponseBlogConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetResponseBlogConnector.swift; sourceTree = "<group>"; };
@@ -74,6 +74,8 @@
 		A49E95641DE4504100FD99D4 /* GRBlogPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GRBlogPost.swift; sourceTree = "<group>"; };
 		A4CD44BA1E5B15B300A01240 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		A4CD8FA3201F293D001C607C /* OctoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoError.swift; sourceTree = "<group>"; };
+		A4D3341D225DF02A0002ACCA /* Encodable+ToDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+ToDictionary.swift"; sourceTree = "<group>"; };
+		A4D3341F225DF13C0002ACCA /* DecodableDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDataParser.swift; sourceTree = "<group>"; };
 		A4E7FBBB1DE44E2700E14AEE /* OctoAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E7FBBE1DE44E2700E14AEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4E7FBC31DE44E2700E14AEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				A4CD44BA1E5B15B300A01240 /* DictionaryExtension.swift */,
 				A49E953D1DE44E6500FD99D4 /* StringExtension.swift */,
+				A4D3341D225DF02A0002ACCA /* Encodable+ToDictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A49E95461DE44E6500FD99D4 /* GlossDataParser.swift */,
+				A4D3341F225DF13C0002ACCA /* DecodableDataParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -185,7 +189,6 @@
 				A49E95481DE44E6500FD99D4 /* Adapter.swift */,
 				A49E95491DE44E6500FD99D4 /* Authorizable.swift */,
 				A49E954A1DE44E6500FD99D4 /* Callable.swift */,
-				A49E954B1DE44E6500FD99D4 /* DataParser.swift */,
 				A49E954C1DE44E6500FD99D4 /* PagingParameters.swift */,
 				A4180DE51DE7373600783352 /* AuthorizationParameters.swift */,
 			);
@@ -274,7 +277,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1010;
 				TargetAttributes = {
 					A4E7FBBA1DE44E2700E14AEE = {
 						CreatedOnToolsVersion = 8.0;
@@ -372,13 +375,14 @@
 				A49E95551DE44E6500FD99D4 /* OctoAdapter.swift in Sources */,
 				A49E954D1DE44E6500FD99D4 /* GrantTypePasswordAuthorization.swift in Sources */,
 				A49E95531DE44E6500FD99D4 /* OAuthRequest.swift in Sources */,
+				A4D33420225DF13C0002ACCA /* DecodableDataParser.swift in Sources */,
 				A49E956A1DE4504100FD99D4 /* GRBlogPost.swift in Sources */,
 				A49E954E1DE44E6500FD99D4 /* Credentials.swift in Sources */,
 				A4CD8FA4201F293D001C607C /* OctoError.swift in Sources */,
-				A49E955C1DE44E6500FD99D4 /* DataParser.swift in Sources */,
 				A4F57FD41DE851E700545F34 /* GetResponseBlogPaging.swift in Sources */,
 				A49E955D1DE44E6500FD99D4 /* PagingParameters.swift in Sources */,
 				A49E955A1DE44E6500FD99D4 /* Authorizable.swift in Sources */,
+				A4D3341E225DF02A0002ACCA /* Encodable+ToDictionary.swift in Sources */,
 				A49E95501DE44E6500FD99D4 /* Paging.swift in Sources */,
 				A46586301E4C737D00FC1EA8 /* OctoLog.swift in Sources */,
 				A49E95521DE44E6500FD99D4 /* StringExtension.swift in Sources */,
@@ -429,15 +433,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -466,7 +479,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -480,15 +493,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -509,7 +531,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -524,7 +546,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maciejkolek.OctoAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -537,7 +559,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maciejkolek.OctoAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

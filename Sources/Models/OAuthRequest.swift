@@ -23,16 +23,9 @@
 //  THE SOFTWARE.
 //
 
-import Gloss
+import Foundation
 
-public class OAuthRequest : Gloss.Encodable {
-    
-    //MARK: - Keys
-    private let GrantTypeKey = "grant_type"
-    private let UsernameKey = "username"
-    private let PasswordKey = "password"
-    private let RefreshTokenKey = "refresh_token"
-    private let ClientIdKey = "client_id"
+public class OAuthRequest: Encodable {
     
     //MARK: - Properties
     var grantType : GrantType = .Password
@@ -41,9 +34,17 @@ public class OAuthRequest : Gloss.Encodable {
     var refreshToken : String?
     var clientId : String?
     
-    enum GrantType: String {
+    enum GrantType: String, Encodable {
         case Password = "password"
         case RefreshToken = "refresh_token"
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case grantType = "grant_type"
+        case username
+        case password
+        case refreshToken = "refresh_token"
+        case clientId = "client_id"
     }
     
     public var refreshTokenHeader : String? {
@@ -65,14 +66,12 @@ public class OAuthRequest : Gloss.Encodable {
         self.clientId = clientID
     }
     
-    // MARK: - Serialization
-    public func toJSON() -> JSON? {
-        return jsonify([
-            GrantTypeKey ~~> self.grantType,
-            UsernameKey ~~> self.username,
-            PasswordKey ~~> self.password,
-            RefreshTokenKey ~~> self.refreshToken,
-            ClientIdKey ~~> self.clientId
-            ])
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(grantType, forKey: .grantType)
+        try container.encode(username, forKey: .username)
+        try container.encode(password, forKey: .password)
+        try container.encode(refreshToken, forKey: .refreshToken)
+        try container.encode(clientId, forKey: .clientId)
     }
 }
